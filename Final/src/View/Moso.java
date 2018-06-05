@@ -28,23 +28,29 @@ public class Moso extends javax.swing.JFrame {
     
     public final void GeneraMesas(){
         
-        
+        JPanel []panel;
+        panel = new JPanel[10];
+        JPanel ob = new JPanel();
         int x = 120;
         int y = 240;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i <= 10; i++) {
             try {
-                JPanel ob = new JPanel();
-                ob.setBackground(Color.red);
-                ob.setSize(300, 300);
-                ob.setAlignmentX(x + 120);
-                ob.setAlignmentY(y + 120);
+                ob.setBackground(Color.blue);
+                ob.setSize(200,300);
+                panel[i] = new JPanel();
+                panel[i].setBackground(Color.red);
+                panel[i].setSize(300, 300);
+                panel[i].setAlignmentX(x + 120);
+                panel[i].setAlignmentY(y + 120);
+                PanelPrincipal.add(panel[i]);
+                PanelPrincipal.add(ob);
                 x++;
                 y++;
-                JLabel lbl = new JLabel("Panel "+ i);
-                lbl.setSize(20, 5);
-                lbl.setForeground(Color.white);
-                ob.add(lbl);
-                PanelPrincipal.add(ob);
+//                JLabel lbl = new JLabel("Panel "+ i);
+//                lbl.setSize(20, 5);
+//                lbl.setForeground(Color.white);
+//                ob.add(lbl);
+                //PanelPrincipal.add(ob);
             } catch (Exception e) {
                 System.out.println(e);
             }
