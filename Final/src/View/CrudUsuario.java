@@ -28,6 +28,14 @@ public class CrudUsuario extends javax.swing.JFrame {
         ob = new Controller();
         ob.LlenarTabla(tablausuario);
         PanelUsuario.enable(false);
+        System.out.println(this.isActive());
+    }
+    
+    public void BucleTable(){
+//        while (this.show()) {
+//            
+//            
+//        }
     }
 
     /**
