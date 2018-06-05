@@ -18,6 +18,7 @@ public class CrudUsuario extends javax.swing.JFrame {
     String id;
     String tipo;
     Controller ob;
+    String nombre, ape, correo, user;
     /**
      * Creates new form CrudUsuario
      */
@@ -39,7 +40,6 @@ public class CrudUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         PanelUsuario = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -60,12 +60,12 @@ public class CrudUsuario extends javax.swing.JFrame {
         btneditar = new javax.swing.JButton();
         btnrestablecer = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        LogoLista = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablausuario = new javax.swing.JTable();
         LogoLista1 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -80,9 +80,6 @@ public class CrudUsuario extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setText("Lista de Usuarios");
 
         PanelUsuario.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -148,6 +145,11 @@ public class CrudUsuario extends javax.swing.JFrame {
         btndeshabilitar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btndeshabilitar.setForeground(new java.awt.Color(255, 255, 255));
         btndeshabilitar.setText("Deshabilitar Usuario");
+        btndeshabilitar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btndeshabilitarMouseClicked(evt);
+            }
+        });
         btndeshabilitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btndeshabilitarActionPerformed(evt);
@@ -168,6 +170,11 @@ public class CrudUsuario extends javax.swing.JFrame {
         btnrestablecer.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnrestablecer.setForeground(new java.awt.Color(255, 255, 255));
         btnrestablecer.setText("Restableces Contraseña");
+        btnrestablecer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnrestablecerMouseClicked(evt);
+            }
+        });
         btnrestablecer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnrestablecerActionPerformed(evt);
@@ -289,14 +296,6 @@ public class CrudUsuario extends javax.swing.JFrame {
             }
         });
 
-        LogoLista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/people.png"))); // NOI18N
-        LogoLista.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        LogoLista.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LogoListaMouseClicked(evt);
-            }
-        });
-
         jSeparator8.setForeground(new java.awt.Color(51, 51, 51));
 
         tablausuario.setModel(new javax.swing.table.DefaultTableModel(
@@ -309,6 +308,7 @@ public class CrudUsuario extends javax.swing.JFrame {
         ));
         tablausuario.setGridColor(new java.awt.Color(0, 153, 255));
         tablausuario.setMaximumSize(new java.awt.Dimension(630, 551));
+        tablausuario.setRowSelectionAllowed(false);
         tablausuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablausuarioMouseClicked(evt);
@@ -316,7 +316,9 @@ public class CrudUsuario extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablausuario);
 
-        LogoLista1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/pencil.png"))); // NOI18N
+        LogoLista1.setForeground(new java.awt.Color(0, 102, 204));
+        LogoLista1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/user-add-java.png"))); // NOI18N
+        LogoLista1.setText("Nuevo Usuario");
         LogoLista1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         LogoLista1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -328,14 +330,13 @@ public class CrudUsuario extends javax.swing.JFrame {
         jSeparator9.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logo.png"))); // NOI18N
+        jLabel3.setText("Lista de Usuarios");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 1190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -343,32 +344,33 @@ public class CrudUsuario extends javax.swing.JFrame {
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
                 .addComponent(PanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(LogoLista)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LogoLista1)
-                .addGap(458, 458, 458))
+                .addGap(12, 12, 12)
+                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 1190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(28, 28, 28))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(LogoLista1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(28, 28, 28))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(LogoLista)
-                    .addComponent(LogoLista1))
-                .addGap(15, 15, 15)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(39, 39, 39)
+                .addComponent(LogoLista1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -379,7 +381,7 @@ public class CrudUsuario extends javax.swing.JFrame {
                         .addComponent(jSeparator9))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -424,16 +426,6 @@ public class CrudUsuario extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void LogoListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoListaMouseClicked
-        //PanelUsuario.hide();
-        //PanelLista.show();
-        //nelLista.setLocation(0, 186);
-    }//GEN-LAST:event_LogoListaMouseClicked
-
-    private void LogoLista1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoLista1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LogoLista1MouseClicked
-
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         xP = evt.getX();
         yP = evt.getY();
@@ -449,24 +441,31 @@ public class CrudUsuario extends javax.swing.JFrame {
         CheckCocinero.setSelected(false);
         
         id = tablausuario.getValueAt(tablausuario.getSelectedRow(), 0).toString();
-        txtnombre.setText(tablausuario.getValueAt(tablausuario.getSelectedRow(), 1).toString());
-        txtapellido.setText(tablausuario.getValueAt(tablausuario.getSelectedRow(), 2).toString());
-        txtuser.setText(tablausuario.getValueAt(tablausuario.getSelectedRow(), 3).toString());
-        txtcorreo.setText(tablausuario.getValueAt(tablausuario.getSelectedRow(), 4).toString());
+        nombre =tablausuario.getValueAt(tablausuario.getSelectedRow(), 1).toString();
+        ape = tablausuario.getValueAt(tablausuario.getSelectedRow(), 2).toString();
+        user =tablausuario.getValueAt(tablausuario.getSelectedRow(), 3).toString();
+        correo = tablausuario.getValueAt(tablausuario.getSelectedRow(), 4).toString();
         tipo = tablausuario.getValueAt(tablausuario.getSelectedRow(), 6).toString();
+        
+        
         if (tipo.equals("1")) {
             checkadmin.setSelected(true);
         }else{
             CheckCocinero.setSelected(true);
         }
         
+        txtnombre.setText(nombre);
+        txtapellido.setText(ape);
+        txtuser.setText(user);
+        txtcorreo.setText(correo);
+        
     }//GEN-LAST:event_tablausuarioMouseClicked
 
     private void btneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditarActionPerformed
-        String nombre = txtnombre.getText();
-        String ape = txtapellido.getText();
-        String correo = txtcorreo.getText();
-        String user = txtuser.getText();
+        nombre = txtnombre.getText();
+        ape = txtapellido.getText();
+        correo = txtcorreo.getText();
+        user = txtuser.getText();
         ob = new Controller();
         ob.EditarUsuario(id, nombre, ape, correo, user, tipo, tablausuario);
     }//GEN-LAST:event_btneditarActionPerformed
@@ -474,6 +473,20 @@ public class CrudUsuario extends javax.swing.JFrame {
     private void btnrestablecerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrestablecerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnrestablecerActionPerformed
+
+    private void btnrestablecerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnrestablecerMouseClicked
+        ob = new Controller();
+        ob.RestablecerContraseña(id, nombre, ape, correo);
+    }//GEN-LAST:event_btnrestablecerMouseClicked
+
+    private void btndeshabilitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btndeshabilitarMouseClicked
+        ob = new Controller();
+    }//GEN-LAST:event_btndeshabilitarMouseClicked
+
+    private void LogoLista1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoLista1MouseClicked
+        Usuario ob = new Usuario();
+        ob.show();
+    }//GEN-LAST:event_LogoLista1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -486,7 +499,7 @@ public class CrudUsuario extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("WIndows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -512,15 +525,14 @@ public class CrudUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton CheckCocinero;
-    private javax.swing.JLabel LogoLista;
     private javax.swing.JLabel LogoLista1;
     private javax.swing.JPanel PanelUsuario;
     private javax.swing.JButton btndeshabilitar;
     private javax.swing.JButton btneditar;
     private javax.swing.JButton btnrestablecer;
     private javax.swing.JRadioButton checkadmin;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

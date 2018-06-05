@@ -11,7 +11,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Model {
-    
+    Sesiones _sesion;
     public Connection Conectar(){
         Connection con = null;
         try {
@@ -24,29 +24,39 @@ public class Model {
         return con;
     }
     
-    public ArrayList Login(String usuario, String pass){
-        ArrayList<String> data = new ArrayList<String>();
+    public Sesiones Login(String usuario, String pass){
         Connection con = Conectar();
         String correo = usuario;
         Config cof = new Config();
         String llave = cof.pass();
         ResultSet rs = null;
         try {
-            String sql = "SELECT COUNT(*), IdTipoUsuario FROM usuario WHERE (LoginUsuario = ? OR CorreoUsuario = ?) AND CAST(AES_DECRYPT(Contraseña, ?) AS CHAR) = ?";
+            String sql = "SELECT COUNT(*), IdTipoUsuario, FlagLogin, NomUsuario, ApeUsuario, IdUsuario FROM usuario WHERE (LoginUsuario = ? OR CorreoUsuario = ?) AND CAST(AES_DECRYPT(Contraseña, ?) AS CHAR) = ?";
             PreparedStatement smt = con.prepareStatement(sql);
             smt.setString(1, usuario);
             smt.setString(2, correo);
             smt.setString(3, llave);
             smt.setString(4, pass);
             rs = smt.executeQuery();
+            //System.out.println(rs);
             while (rs.next()) {
-                data.add(rs.getObject(1).toString());
-                data.add(rs.getObject(2).toString());
+                _sesion = new Sesiones(
+                        rs.getObject(1).toString(), 
+                        rs.getObject(2).toString(), 
+                        rs.getObject(3).toString(), 
+                        rs.getObject(4).toString(), 
+                        rs.getObject(5).toString(), 
+                        rs.getObject(6).toString()
+                );
             }
         } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            //System.out.println("Error login:" +e);
         }
-        return data;
+        return _sesion;
+    }
+    
+    public Sesiones sesion(){
+        return _sesion;
     }
     
     public String CrearUsuario(String nom, String ape, String user, String correo, String pass, String tipo){
@@ -55,7 +65,7 @@ public class Model {
         Config cof = new Config();
         String llave = cof.pass();
         try {
-            String sql = "INSERT INTO usuario (NomUsuario, ApeUsuario, LoginUsuario, CorreoUsuario, idTipoUsuario, Contraseña) VALUES (?, ?, ?, ?, ?, AES_ENCRYPT(?, ?))";
+            String sql = "INSERT INTO usuario (NomUsuario, ApeUsuario, LoginUsuario, CorreoUsuario, idTipoUsuario, Contraseña, FlagLogin) VALUES (?, ?, ?, ?, ?, AES_ENCRYPT(?, ?), 0)";
             PreparedStatement smt = con.prepareStatement(sql);
             smt.setString(1, nom);
             smt.setString(2, ape);
@@ -118,6 +128,48 @@ public class Model {
         }
         
         return res.toString();
+    }
+    
+    public String RestablecerContraseña(String id, String pass){
+        Integer res = 0;
+        Connection con = Conectar();
+        Config cof = new Config();
+        String llave = cof.pass();
+        
+        try {
+            String sql = "UPDATE usuario SET contraseña = AES_ENCRYPT(?, ?), FlagLogin = 0 WHERE IdUsuario = ?";
+            PreparedStatement smt = con.prepareStatement(sql);
+            smt.setString(1, pass);
+            smt.setString(2, llave);
+            smt.setString(3, id);
+            res = smt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error restablecer pass" + e);
+        }
+        
+        return res.toString();
+        
+    }
+    
+    public String NuevoPass(String id, String pass){
+        Integer res = 0;
+        Connection con = Conectar();
+        Config cof = new Config();
+        String llave = cof.pass();
+        
+        try {
+            String sql = "UPDATE usuario SET contraseña = AES_ENCRYPT(?, ?), FlagLogin = 1 WHERE IdUsuario = ?";
+            PreparedStatement smt = con.prepareStatement(sql);
+            smt.setString(1, pass);
+            smt.setString(2, llave);
+            smt.setString(3, id);
+            res = smt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error restablecer pass" + e);
+        }
+        
+        return res.toString();
+        
     }
     
 }
