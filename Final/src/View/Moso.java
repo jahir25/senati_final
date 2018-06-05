@@ -7,6 +7,8 @@ package View;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Panel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -27,30 +29,37 @@ public class Moso extends javax.swing.JFrame {
     }
     
     public final void GeneraMesas(){
+        PanelP.setLayout(new GridLayout(3, 4, 70, 40));
+//        JButton ob = new JButton("uno");
+//        ob.setSize(100, 100);
+//        ob.setVisible(true);
+//        PanelP.add(ob);
+//        JButton ob2 = new JButton("dos");
+//        ob2.setSize(100, 100);
+//        ob2.setVisible(true);
+//        PanelP.add(ob2);
         
-        JPanel []panel;
-        panel = new JPanel[10];
-        JPanel ob = new JPanel();
-        int x = 120;
-        int y = 240;
-        for (int i = 1; i <= 10; i++) {
+        
+        
+//        JPanel panel;
+//        panel = new JPanel();
+        JButton botones[];
+        botones = new JButton[10];
+//        JPanel ob = new JPanel();
+//        ob.setLayout(new GridBagLayout());
+//        JLabel []lbl = new JLabel[10];
+//        int x = 120;
+//        int y = 240;
+//        setVisible(true);
+//        setSize(400, 400);
+        for (int i = 0; i <= 10; i++) {
             try {
-                ob.setBackground(Color.blue);
-                ob.setSize(200,300);
-                panel[i] = new JPanel();
-                panel[i].setBackground(Color.red);
-                panel[i].setSize(300, 300);
-                panel[i].setAlignmentX(x + 120);
-                panel[i].setAlignmentY(y + 120);
-                PanelPrincipal.add(panel[i]);
-                PanelPrincipal.add(ob);
-                x++;
-                y++;
-//                JLabel lbl = new JLabel("Panel "+ i);
-//                lbl.setSize(20, 5);
-//                lbl.setForeground(Color.white);
-//                ob.add(lbl);
-                //PanelPrincipal.add(ob);
+                botones[i] = new JButton("Mesa N°" + i);
+                botones[i].setBackground(new Color(66,133,205));
+                JLabel label = new JLabel("Mesa  N°" + i);
+                botones[i].setForeground(Color.white);
+                botones[i].setSize(15, 20);
+                PanelP.add(botones[i]);
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -67,32 +76,38 @@ public class Moso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        PanelPrincipal = new javax.swing.JPanel();
+        PanelP = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        PanelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        PanelP.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout PanelPrincipalLayout = new javax.swing.GroupLayout(PanelPrincipal);
-        PanelPrincipal.setLayout(PanelPrincipalLayout);
-        PanelPrincipalLayout.setHorizontalGroup(
-            PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1118, Short.MAX_VALUE)
+        javax.swing.GroupLayout PanelPLayout = new javax.swing.GroupLayout(PanelP);
+        PanelP.setLayout(PanelPLayout);
+        PanelPLayout.setHorizontalGroup(
+            PanelPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1094, Short.MAX_VALUE)
         );
-        PanelPrincipalLayout.setVerticalGroup(
-            PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+        PanelPLayout.setVerticalGroup(
+            PanelPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 674, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PanelP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PanelP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -134,6 +149,6 @@ public class Moso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelPrincipal;
+    private javax.swing.JPanel PanelP;
     // End of variables declaration//GEN-END:variables
 }
