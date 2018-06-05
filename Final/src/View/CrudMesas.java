@@ -22,7 +22,7 @@ public class CrudMesas extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         ob = new ControllerMesas();
-        ob.LlenarTabla(tablaplatos);
+        ob.LlenarTabla(tablamesa);
         Panelplatos.enable(false);
     }
 
@@ -61,7 +61,7 @@ public class CrudMesas extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaplatos = new javax.swing.JTable();
+        tablamesa = new javax.swing.JTable();
         jSeparator9 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -327,7 +327,7 @@ public class CrudMesas extends javax.swing.JFrame {
 
         jSeparator8.setForeground(new java.awt.Color(51, 51, 51));
 
-        tablaplatos.setModel(new javax.swing.table.DefaultTableModel(
+        tablamesa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -335,15 +335,15 @@ public class CrudMesas extends javax.swing.JFrame {
 
             }
         ));
-        tablaplatos.setGridColor(new java.awt.Color(0, 153, 255));
-        tablaplatos.setMaximumSize(new java.awt.Dimension(630, 551));
-        tablaplatos.setRowSelectionAllowed(false);
-        tablaplatos.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablamesa.setGridColor(new java.awt.Color(0, 153, 255));
+        tablamesa.setMaximumSize(new java.awt.Dimension(630, 551));
+        tablamesa.setRowSelectionAllowed(false);
+        tablamesa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaplatosMouseClicked(evt);
+                tablamesaMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tablaplatos);
+        jScrollPane1.setViewportView(tablamesa);
 
         jSeparator9.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator9.setForeground(new java.awt.Color(0, 153, 255));
@@ -422,18 +422,18 @@ public class CrudMesas extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void tablaplatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaplatosMouseClicked
+    private void tablamesaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablamesaMouseClicked
 
-        id = tablaplatos.getValueAt(tablaplatos.getSelectedRow(), 0).toString();
-        NumMesa =tablaplatos.getValueAt(tablaplatos.getSelectedRow(), 1).toString();
-        NumAsientos = tablaplatos.getValueAt(tablaplatos.getSelectedRow(), 2).toString();
-        EstaMesa = tablaplatos.getValueAt(tablaplatos.getSelectedRow(), 3).toString();
+        id = tablamesa.getValueAt(tablamesa.getSelectedRow(), 0).toString();
+        NumMesa =tablamesa.getValueAt(tablamesa.getSelectedRow(), 1).toString();
+        NumAsientos = tablamesa.getValueAt(tablamesa.getSelectedRow(), 2).toString();
+        EstaMesa = tablamesa.getValueAt(tablamesa.getSelectedRow(), 3).toString();
 
          txtmesas1.setText(NumMesa);
         txtasientos1.setText(NumAsientos);
         txtestado1.setText(EstaMesa);
 
-    }//GEN-LAST:event_tablaplatosMouseClicked
+    }//GEN-LAST:event_tablamesaMouseClicked
 
     private void txtmesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmesasActionPerformed
         // TODO add your handling code here:
@@ -447,7 +447,7 @@ public class CrudMesas extends javax.swing.JFrame {
         
         ControllerMesas ob = new ControllerMesas();
         ob.GuardarMesas(NumMesa,NumAsientos,EstaMesa);
-        ob.LlenarTabla(tablaplatos);
+        ob.LlenarTabla(tablamesa);
     }//GEN-LAST:event_btnregistrarActionPerformed
 
     private void btndeshabilitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btndeshabilitarMouseClicked
@@ -548,7 +548,7 @@ public class CrudMesas extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel lblmesa;
-    private javax.swing.JTable tablaplatos;
+    private javax.swing.JTable tablamesa;
     private javax.swing.JTextField txtasientos;
     private javax.swing.JTextField txtasientos1;
     private javax.swing.JTextField txtestado;

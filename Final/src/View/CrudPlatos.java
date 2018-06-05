@@ -5,17 +5,26 @@
  */
 package View;
 
+import Controller.ControllerPlatos;
+
 /**
  *
  * @author ALUMNO
  */
 public class CrudPlatos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CrudPlatos
-     */
+       int xP, yP;
+    String id;
+    ControllerPlatos ob;
+    String NomPlato, DescPlato;
+    String PrecPlato;
+
     public CrudPlatos() {
+        this.setUndecorated(true);
         initComponents();
+        ob = new ControllerPlatos();
+        ob.LlenarTabla(tablaplatos);
+        Panelplatos.enable(false);
     }
 
     /**
@@ -27,21 +36,419 @@ public class CrudPlatos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaplatos = new javax.swing.JTable();
+        jSeparator9 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        Panelplatos = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtplato = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        txtprecio2 = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        btnregistrar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        txtdescrip = new javax.swing.JTextField();
+        txtplato2 = new javax.swing.JTextField();
+        jSeparator6 = new javax.swing.JSeparator();
+        txtdescrip2 = new javax.swing.JTextField();
+        jSeparator7 = new javax.swing.JSeparator();
+        txtprecio = new javax.swing.JTextField();
+        jSeparator10 = new javax.swing.JSeparator();
+        lblmesa = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        btnregistrar1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/close-browser.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
+        jSeparator8.setForeground(new java.awt.Color(51, 51, 51));
+
+        tablaplatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tablaplatos.setGridColor(new java.awt.Color(0, 153, 255));
+        tablaplatos.setMaximumSize(new java.awt.Dimension(630, 551));
+        tablaplatos.setRowSelectionAllowed(false);
+        tablaplatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaplatosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablaplatos);
+
+        jSeparator9.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator9.setForeground(new java.awt.Color(0, 153, 255));
+        jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logo.png"))); // NOI18N
+        jLabel3.setText("Lista de Platos");
+
+        Panelplatos.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setText("Nombre del Plato");
+
+        jLabel6.setText("Descripción");
+
+        txtplato.setForeground(new java.awt.Color(102, 102, 102));
+        txtplato.setText("Nombre del Plato");
+        txtplato.setBorder(null);
+        txtplato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtplatoActionPerformed(evt);
+            }
+        });
+
+        jSeparator2.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
+
+        txtprecio2.setForeground(new java.awt.Color(102, 102, 102));
+        txtprecio2.setText("Precio");
+        txtprecio2.setBorder(null);
+        txtprecio2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtprecio2ActionPerformed(evt);
+            }
+        });
+
+        jSeparator3.setForeground(new java.awt.Color(0, 153, 255));
+
+        jSeparator4.setForeground(new java.awt.Color(0, 153, 255));
+
+        btnregistrar.setBackground(new java.awt.Color(0, 153, 255));
+        btnregistrar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnregistrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnregistrar.setText("Registrar");
+        btnregistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregistrarActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Precio");
+
+        jSeparator5.setForeground(new java.awt.Color(0, 153, 255));
+
+        txtdescrip.setForeground(new java.awt.Color(102, 102, 102));
+        txtdescrip.setText("Descripción");
+        txtdescrip.setBorder(null);
+        txtdescrip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtdescripActionPerformed(evt);
+            }
+        });
+
+        txtplato2.setForeground(new java.awt.Color(102, 102, 102));
+        txtplato2.setText("Nombre del Plato");
+        txtplato2.setBorder(null);
+        txtplato2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtplato2ActionPerformed(evt);
+            }
+        });
+
+        jSeparator6.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator6.setForeground(new java.awt.Color(0, 153, 255));
+
+        txtdescrip2.setForeground(new java.awt.Color(102, 102, 102));
+        txtdescrip2.setText("Descripción");
+        txtdescrip2.setBorder(null);
+        txtdescrip2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtdescrip2ActionPerformed(evt);
+            }
+        });
+
+        jSeparator7.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator7.setForeground(new java.awt.Color(0, 153, 255));
+
+        txtprecio.setForeground(new java.awt.Color(102, 102, 102));
+        txtprecio.setText("Precio");
+        txtprecio.setBorder(null);
+        txtprecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtprecioActionPerformed(evt);
+            }
+        });
+
+        jSeparator10.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator10.setForeground(new java.awt.Color(0, 153, 255));
+
+        lblmesa.setText("Nombre del Plato");
+
+        jLabel1.setText("Descripcion");
+
+        jLabel8.setText("Precio");
+
+        btnregistrar1.setBackground(new java.awt.Color(0, 153, 255));
+        btnregistrar1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnregistrar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnregistrar1.setText("Editar");
+        btnregistrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregistrar1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelplatosLayout = new javax.swing.GroupLayout(Panelplatos);
+        Panelplatos.setLayout(PanelplatosLayout);
+        PanelplatosLayout.setHorizontalGroup(
+            PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelplatosLayout.createSequentialGroup()
+                .addGap(199, 199, 199)
+                .addComponent(jSeparator5)
+                .addGap(129, 129, 129))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelplatosLayout.createSequentialGroup()
+                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelplatosLayout.createSequentialGroup()
+                        .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelplatosLayout.createSequentialGroup()
+                                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(PanelplatosLayout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10))
+                            .addGroup(PanelplatosLayout.createSequentialGroup()
+                                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(PanelplatosLayout.createSequentialGroup()
+                                        .addGap(209, 209, 209)
+                                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(PanelplatosLayout.createSequentialGroup()
+                                        .addGap(199, 199, 199)
+                                        .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jSeparator4)
+                                            .addComponent(jSeparator2)
+                                            .addComponent(txtdescrip)))
+                                    .addGroup(PanelplatosLayout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addGroup(PanelplatosLayout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addGap(66, 66, 66)
+                                                .addComponent(txtplato)))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 1, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelplatosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelplatosLayout.createSequentialGroup()
+                                .addComponent(lblmesa)
+                                .addGap(71, 71, 71)
+                                .addComponent(txtplato2))
+                            .addGroup(PanelplatosLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtdescrip2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(PanelplatosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtprecio2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(128, 128, 128))
+            .addGroup(PanelplatosLayout.createSequentialGroup()
+                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelplatosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel8))
+                    .addGroup(PanelplatosLayout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelplatosLayout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(btnregistrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        PanelplatosLayout.setVerticalGroup(
+            PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelplatosLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtplato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelplatosLayout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelplatosLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtdescrip, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtplato2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblmesa))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(txtdescrip2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtprecio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(btnregistrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Panelplatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 1190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(51, 51, 51))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addGap(16, 16, 16)
+                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator9)
+                    .addComponent(Panelplatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addGap(29, 29, 29))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 836, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+
+        this.hide();
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void tablaplatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaplatosMouseClicked
+
+
+        String id = tablaplatos.getValueAt(tablaplatos.getSelectedRow(), 0).toString();
+        String NomPlato = tablaplatos.getValueAt(tablaplatos.getSelectedRow(), 1).toString();
+        String DescPlato = tablaplatos.getValueAt(tablaplatos.getSelectedRow(), 2).toString();
+        String PrecPlato = tablaplatos.getValueAt(tablaplatos.getSelectedRow(), 3).toString();
+
+         txtplato2.setText(NomPlato);
+        txtdescrip2.setText(DescPlato);
+        txtprecio2.setText(PrecPlato);
+
+
+    }//GEN-LAST:event_tablaplatosMouseClicked
+
+    private void txtplatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtplatoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtplatoActionPerformed
+
+    private void txtprecio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecio2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtprecio2ActionPerformed
+
+    private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
+
+        String NomPlato = txtplato.getText();
+        String DescPlato = txtdescrip.getText();
+        String PrecPlato = txtprecio.getText();
+
+        ControllerPlatos ob = new ControllerPlatos();
+        ob.GuardarPlatos(NomPlato,DescPlato,PrecPlato);
+        ob.LlenarTabla(tablaplatos);
+    }//GEN-LAST:event_btnregistrarActionPerformed
+
+    private void txtplato2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtplato2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtplato2ActionPerformed
+
+    private void txtdescrip2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdescrip2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdescrip2ActionPerformed
+
+    private void txtprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtprecioActionPerformed
+
+    private void btnregistrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnregistrar1ActionPerformed
+
+    private void txtdescripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdescripActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdescripActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +486,34 @@ public class CrudPlatos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Panelplatos;
+    private javax.swing.JButton btnregistrar;
+    private javax.swing.JButton btnregistrar1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JLabel lblmesa;
+    private javax.swing.JTable tablaplatos;
+    private javax.swing.JTextField txtdescrip;
+    private javax.swing.JTextField txtdescrip2;
+    private javax.swing.JTextField txtplato;
+    private javax.swing.JTextField txtplato2;
+    private javax.swing.JTextField txtprecio;
+    private javax.swing.JTextField txtprecio2;
     // End of variables declaration//GEN-END:variables
 }
