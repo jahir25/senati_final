@@ -8,6 +8,7 @@ package Controller;
 import Model.Model;
 import Model.Sesiones;
 import View.Admin;
+import View.Chef;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
@@ -49,7 +50,10 @@ public class Controller {
                     adm.obtenerSesion(data);
                     adm.show();
                 }else{
-                    
+                    System.out.println("es chef");
+                    Chef ch = new Chef();
+                    ch.obtenerSesion(data);
+                    ch.show();
                 }
             }else{
                 VerificarLogeo log = new VerificarLogeo();
@@ -134,6 +138,7 @@ public class Controller {
         table.getColumnModel().getColumn(6).setMinWidth(0);
         table.getTableHeader().getColumnModel().getColumn(6).setMaxWidth(0);
         table.getTableHeader().getColumnModel().getColumn(6).setMinWidth(0);
+        //LlenarTabla(table);
     }
     
     public void EditarUsuario(String id, String nom, String ape, String correo, String user,String tipo, JTable table){

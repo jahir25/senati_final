@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class Model {
     Sesiones _sesion;
+    
     public Connection Conectar(){
         Connection con = null;
         try {
@@ -23,6 +24,7 @@ public class Model {
         }
         return con;
     }
+    
     
     public Sesiones Login(String usuario, String pass){
         Connection con = Conectar();
@@ -49,6 +51,7 @@ public class Model {
                         rs.getObject(6).toString()
                 );
             }
+            con.close();
         } catch (Exception e) {
             //System.out.println("Error login:" +e);
         }
@@ -102,6 +105,7 @@ public class Model {
                 }
                 model.addRow(fila);
             }
+            con.close();
         } catch (Exception e) {
             System.out.println(e);
         }

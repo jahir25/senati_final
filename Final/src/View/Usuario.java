@@ -16,14 +16,13 @@ import java.awt.Point;
 public class Usuario extends javax.swing.JFrame {
     int xP, yP;
     String tipo = "1";
+    
     /**
      * Creates new form Usuario
      */
     public Usuario() {
         initComponents();
         checkadmin.setSelected(true);
-        //PanelLista.hide();
-        //jTabbedPane1.setEnabledAt(0, false);
     }
 
     /**
@@ -327,6 +326,8 @@ public class Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_LogoUsuarioMouseClicked
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+        CrudUsuario objcrud = new CrudUsuario();
+        objcrud.StopHilo();
         String nombre = txtnombre.getText();
         String ape = txtapellido.getText();
         String correo = txtcorreo.getText();
@@ -334,6 +335,12 @@ public class Usuario extends javax.swing.JFrame {
         String pass = String.valueOf(txtpass.getPassword());
         Controller ob = new Controller();
         ob.CrearCuenta(nombre, ape, correo, user, pass, tipo);
+        txtnombre.setText("");
+        txtapellido.setText("");
+        txtcorreo.setText("");
+        txtuser.setText("");
+        txtpass.setText("");
+        objcrud.h.start();
     }//GEN-LAST:event_btnguardarActionPerformed
 
     private void checkadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkadminActionPerformed

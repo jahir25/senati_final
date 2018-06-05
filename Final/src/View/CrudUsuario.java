@@ -8,17 +8,23 @@ package View;
 import Controller.Controller;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.event.FocusListener;
+import java.awt.event.WindowListener;
 
 /**
  *
  * @author ALUMNO
  */
 public class CrudUsuario extends javax.swing.JFrame {
+
     int xP, yP;
     String id;
     String tipo;
     Controller ob;
+    public boolean valhilo = true;
     String nombre, ape, correo, user;
+    Hilo h = new Hilo();
+
     /**
      * Creates new form CrudUsuario
      */
@@ -28,14 +34,32 @@ public class CrudUsuario extends javax.swing.JFrame {
         ob = new Controller();
         ob.LlenarTabla(tablausuario);
         PanelUsuario.enable(false);
-        System.out.println(this.isActive());
+        h.start();
+        //BucleTable();
+        //System.out.println(this.isEnabled());
     }
-    
-    public void BucleTable(){
-//        while (this.show()) {
-//            
-//            
-//        }
+
+    public class Hilo extends Thread {
+
+        public void run() {
+            while (valhilo) {
+                System.out.println(valhilo);
+                try {
+                    System.out.println("sale");
+                    ob.LlenarTabla(tablausuario);
+                    Thread.sleep(5000);
+                } catch (Exception e) {
+
+                }
+
+            }
+        }
+    }
+
+    public void StopHilo() {
+        this.valhilo = false;
+        h.interrupt();
+        System.out.println(valhilo);
     }
 
     /**
@@ -367,15 +391,15 @@ public class CrudUsuario extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)
-                        .addGap(28, 28, 28))))
+                        .addGap(51, 51, 51))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
                 .addGap(39, 39, 39)
                 .addComponent(LogoLista1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -389,7 +413,7 @@ public class CrudUsuario extends javax.swing.JFrame {
                         .addComponent(jSeparator9))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -431,6 +455,7 @@ public class CrudUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_CheckCocineroActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        StopHilo();
         this.hide();
     }//GEN-LAST:event_jLabel2MouseClicked
 
@@ -447,26 +472,25 @@ public class CrudUsuario extends javax.swing.JFrame {
     private void tablausuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablausuarioMouseClicked
         checkadmin.setSelected(false);
         CheckCocinero.setSelected(false);
-        
+
         id = tablausuario.getValueAt(tablausuario.getSelectedRow(), 0).toString();
-        nombre =tablausuario.getValueAt(tablausuario.getSelectedRow(), 1).toString();
+        nombre = tablausuario.getValueAt(tablausuario.getSelectedRow(), 1).toString();
         ape = tablausuario.getValueAt(tablausuario.getSelectedRow(), 2).toString();
-        user =tablausuario.getValueAt(tablausuario.getSelectedRow(), 3).toString();
+        user = tablausuario.getValueAt(tablausuario.getSelectedRow(), 3).toString();
         correo = tablausuario.getValueAt(tablausuario.getSelectedRow(), 4).toString();
         tipo = tablausuario.getValueAt(tablausuario.getSelectedRow(), 6).toString();
-        
-        
+
         if (tipo.equals("1")) {
             checkadmin.setSelected(true);
-        }else{
+        } else {
             CheckCocinero.setSelected(true);
         }
-        
+
         txtnombre.setText(nombre);
         txtapellido.setText(ape);
         txtuser.setText(user);
         txtcorreo.setText(correo);
-        
+
     }//GEN-LAST:event_tablausuarioMouseClicked
 
     private void btneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditarActionPerformed
@@ -492,6 +516,7 @@ public class CrudUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btndeshabilitarMouseClicked
 
     private void LogoLista1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoLista1MouseClicked
+        //StopHilo();
         Usuario ob = new Usuario();
         ob.show();
     }//GEN-LAST:event_LogoLista1MouseClicked
