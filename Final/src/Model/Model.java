@@ -105,7 +105,7 @@ public class Model {
                 }
                 model.addRow(fila);
             }
-            con.close();
+            
         } catch (Exception e) {
             System.out.println(e);
         }

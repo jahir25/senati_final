@@ -130,10 +130,12 @@ public class Controller {
         model.addColumn("ID tipo");
         ob.GetUsuarios(model);
         table.setModel(model);
+        
         table.getColumnModel().getColumn(0).setMaxWidth(0);
         table.getColumnModel().getColumn(0).setMinWidth(0);
         table.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
         table.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
+        
         table.getColumnModel().getColumn(6).setMaxWidth(0);
         table.getColumnModel().getColumn(6).setMinWidth(0);
         table.getTableHeader().getColumnModel().getColumn(6).setMaxWidth(0);

@@ -51,7 +51,6 @@ public class CrudUsuario extends javax.swing.JFrame {
                 } catch (Exception e) {
 
                 }
-
             }
         }
     }

@@ -7,6 +7,11 @@ package View;
 
 import Controller.ControllerChef;
 import Model.Sesiones;
+import java.awt.Color;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -14,11 +19,17 @@ import Model.Sesiones;
  */
 public class Chef extends javax.swing.JFrame {
     Sesiones data;
+    int xP, yP;
+    ControllerChef chef;
+    String idPedido;
     /**
      * Creates new form Chef
      */
     public Chef() {
         initComponents();
+        CargarTabla();
+        btnrealizado.setVisible(false);
+        tablepedido.setBackground(new Color(0, 0, 0, 0));
     }
     
     
@@ -26,12 +37,13 @@ public class Chef extends javax.swing.JFrame {
         this.data = data;
         String nombrecompleto;
         nombrecompleto = data.getNombre() + " " + data.getApellido();
+        labeluser1.setHorizontalAlignment(SwingConstants.RIGHT);
         labeluser1.setText(nombrecompleto);
     }
     
     public void CargarTabla(){
-        ControllerChef chef = new ControllerChef();
-        chef.CargarTabla(tableplatos);
+        chef = new ControllerChef();
+        chef.CargarTabla(tablepedido);
     }
 
     /**
@@ -50,7 +62,9 @@ public class Chef extends javax.swing.JFrame {
         labeluser = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableplatos = new javax.swing.JTable();
+        tablepedido = new javax.swing.JTable();
+        btnrealizado = new javax.swing.JButton();
+        btntomar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -109,6 +123,17 @@ public class Chef extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -125,7 +150,8 @@ public class Chef extends javax.swing.JFrame {
             }
         });
 
-        tableplatos.setModel(new javax.swing.table.DefaultTableModel(
+        tablepedido.setForeground(new java.awt.Color(51, 51, 51));
+        tablepedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -136,23 +162,60 @@ public class Chef extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tableplatos);
+        tablepedido.setGridColor(new java.awt.Color(0, 153, 255));
+        tablepedido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablepedidoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tablepedidoMouseEntered(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablepedido);
+
+        btnrealizado.setBackground(new java.awt.Color(255, 102, 102));
+        btnrealizado.setForeground(new java.awt.Color(255, 255, 255));
+        btnrealizado.setText("Pedido Realizado");
+        btnrealizado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnrealizadoActionPerformed(evt);
+            }
+        });
+
+        btntomar.setBackground(new java.awt.Color(0, 153, 255));
+        btntomar.setForeground(new java.awt.Color(255, 255, 255));
+        btntomar.setText("Tomar Pedido");
+        btntomar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntomarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1020, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1020, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, 0)
+                        .addComponent(btntomar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(btnrealizado, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
-                .addGap(12, 12, 12))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnrealizado, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btntomar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(66, 133, 205));
@@ -161,6 +224,9 @@ public class Chef extends javax.swing.JFrame {
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel2MousePressed(evt);
             }
         });
 
@@ -249,6 +315,50 @@ public class Chef extends javax.swing.JFrame {
         on.show();
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+        
+    }//GEN-LAST:event_jLabel2MousePressed
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        xP = evt.getX();
+        yP = evt.getY();
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        setLocation(point.x - xP, point.y - yP);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void btntomarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntomarActionPerformed
+        chef = new ControllerChef();
+        System.out.println("este es el "  + idPedido);
+        if (idPedido == null || idPedido.length() == 0) {
+            System.out.println("entro error");
+            JOptionPane.showMessageDialog(null, "Escoje un pedido", "Info", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            System.out.println("entra aqui");
+            chef.TomarPedido(idPedido);
+            btnrealizado.setVisible(true);
+            btntomar.setVisible(false);
+        }
+    }//GEN-LAST:event_btntomarActionPerformed
+
+    private void btnrealizadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrealizadoActionPerformed
+        chef = new ControllerChef();
+        btnrealizado.setVisible(false);
+        btntomar.setVisible(true);
+        chef.PedidoRealizado(idPedido);
+        idPedido = null;
+    }//GEN-LAST:event_btnrealizadoActionPerformed
+
+    private void tablepedidoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablepedidoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablepedidoMouseEntered
+
+    private void tablepedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablepedidoMouseClicked
+        idPedido = tablepedido.getValueAt(tablepedido.getSelectedRow(), 1).toString();
+    }//GEN-LAST:event_tablepedidoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -285,6 +395,8 @@ public class Chef extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnrealizado;
+    private javax.swing.JButton btntomar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -297,6 +409,6 @@ public class Chef extends javax.swing.JFrame {
     private javax.swing.JLabel label3;
     private javax.swing.JLabel labeluser;
     private javax.swing.JLabel labeluser1;
-    private javax.swing.JTable tableplatos;
+    private javax.swing.JTable tablepedido;
     // End of variables declaration//GEN-END:variables
 }
