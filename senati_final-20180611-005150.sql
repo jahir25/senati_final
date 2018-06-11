@@ -1,8 +1,8 @@
 --
 -- DbNinja v3.2.7 for MySQL
 --
--- Dump date: 2018-06-05 21:54:00 (UTC)
--- Server version: 10.1.22-MariaDB
+-- Dump date: 2018-06-11 00:51:50 (UTC)
+-- Server version: 10.1.30-MariaDB
 -- Database: senati_final
 --
 
@@ -15,6 +15,7 @@
 /*!40101 SET NAMES utf8 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 
+DROP DATABASE IF EXISTS `senati_final`;
 CREATE DATABASE `senati_final` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `senati_final`;
@@ -26,7 +27,7 @@ CREATE TABLE `estadopedido` (
   `IdEstado` int(11) NOT NULL AUTO_INCREMENT,
   `EstPedido` varchar(20) NOT NULL,
   PRIMARY KEY (`IdEstado`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 
 --
@@ -36,13 +37,14 @@ CREATE TABLE `mesas` (
   `IdMesa` int(11) NOT NULL AUTO_INCREMENT,
   `NumMesa` int(3) NOT NULL,
   `NumAsientos` int(20) NOT NULL,
-  `Estado` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IdMesa`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `IdEstadoMesa` int(11) DEFAULT NULL,
+  PRIMARY KEY (`IdMesa`),
+  KEY `new_index_1` (`IdEstadoMesa`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 
 --
--- Structure for table: pedidoDetalle
+-- Structure for table: pedidodetalle
 --
 CREATE TABLE `pedidodetalle` (
   `IdDetalle` int(11) NOT NULL AUTO_INCREMENT,
@@ -54,7 +56,7 @@ CREATE TABLE `pedidodetalle` (
   `FechaPedido` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`IdDetalle`),
   KEY `new_index_2` (`IdPedido`,`IdPlato`,`IdEstado`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 
 --
@@ -63,10 +65,11 @@ CREATE TABLE `pedidodetalle` (
 CREATE TABLE `pedidos` (
   `IdPedidos` int(11) NOT NULL AUTO_INCREMENT,
   `IdMesa` int(11) DEFAULT NULL,
+  `IdEstadoPedidos` int(1) DEFAULT NULL,
   `FechaHora` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`IdPedidos`),
   KEY `fkIdMesa` (`IdMesa`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 
 --
@@ -106,7 +109,28 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`IdUsuario`),
   KEY `fkTipoUsuario` (`IdTipoUsuario`),
   CONSTRAINT `fkTipoUsuario` FOREIGN KEY (`IdTipoUsuario`) REFERENCES `tipousuario` (`IdTipoUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+
+--
+-- Structure for table: estadomesa
+--
+CREATE TABLE `estadomesa` (
+  `IdEstadoMesa` int(11) NOT NULL AUTO_INCREMENT,
+  `Estado` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`IdEstadoMesa`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+
+--
+-- Structure for table: estadopedidos
+--
+CREATE TABLE `estadopedidos` (
+  `IdEstadoPedidos` int(11) NOT NULL AUTO_INCREMENT,
+  `EstadoPedidos` varchar(50) NOT NULL,
+  PRIMARY KEY (`IdEstadoPedidos`),
+  KEY `new_index_1` (`EstadoPedidos`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 
 --
@@ -115,7 +139,7 @@ CREATE TABLE `usuario` (
 LOCK TABLES `estadopedido` WRITE;
 ALTER TABLE `estadopedido` DISABLE KEYS;
 
-INSERT INTO `estadopedido` (`IdEstado`,`EstPedido`) VALUES (1,'Pendiente'),(2,'Tomado'),(3,'Realizado');
+INSERT INTO `estadopedido` (`IdEstado`,`EstPedido`) VALUES (1,'Pendiente'),(2,'Tomado'),(3,'Realizado'),(4,'Cancelado'),(5,'Cerrado');
 
 ALTER TABLE `estadopedido` ENABLE KEYS;
 UNLOCK TABLES;
@@ -127,21 +151,21 @@ COMMIT;
 LOCK TABLES `mesas` WRITE;
 ALTER TABLE `mesas` DISABLE KEYS;
 
-INSERT INTO `mesas` (`IdMesa`,`NumMesa`,`NumAsientos`,`Estado`) VALUES (1,1,5,NULL);
+INSERT INTO `mesas` (`IdMesa`,`NumMesa`,`NumAsientos`,`IdEstadoMesa`) VALUES (1,1,5,2),(2,2,6,NULL);
 
 ALTER TABLE `mesas` ENABLE KEYS;
 UNLOCK TABLES;
 COMMIT;
 
 --
--- Data for table: pedidoDetalle
+-- Data for table: pedidodetalle
 --
-LOCK TABLES `pedidoDetalle` WRITE;
-ALTER TABLE `pedidoDetalle` DISABLE KEYS;
+LOCK TABLES `pedidodetalle` WRITE;
+ALTER TABLE `pedidodetalle` DISABLE KEYS;
 
--- Table contains no data
+INSERT INTO `pedidodetalle` (`IdDetalle`,`IdPedido`,`IdPlato`,`IdEstado`,`Cantidad`,`Observación`,`FechaPedido`) VALUES (1,1,1,1,1,'','2018-06-10 19:42:36'),(2,2,1,1,2,'asd','2018-06-10 19:46:48');
 
-ALTER TABLE `pedidoDetalle` ENABLE KEYS;
+ALTER TABLE `pedidodetalle` ENABLE KEYS;
 UNLOCK TABLES;
 COMMIT;
 
@@ -151,7 +175,7 @@ COMMIT;
 LOCK TABLES `pedidos` WRITE;
 ALTER TABLE `pedidos` DISABLE KEYS;
 
-INSERT INTO `pedidos` (`IdPedidos`,`IdMesa`,`FechaHora`) VALUES (1,1,'2018-06-05 11:47:58');
+INSERT INTO `pedidos` (`IdPedidos`,`IdMesa`,`IdEstadoPedidos`,`FechaHora`) VALUES (1,1,2,'2018-06-10 19:42:28'),(2,1,2,'2018-06-10 19:46:44');
 
 ALTER TABLE `pedidos` ENABLE KEYS;
 UNLOCK TABLES;
@@ -163,7 +187,7 @@ COMMIT;
 LOCK TABLES `platos` WRITE;
 ALTER TABLE `platos` DISABLE KEYS;
 
-INSERT INTO `platos` (`IdPlato`,`NomPlato`,`DescPlato`,`PrecPlato`) VALUES (1,'Adobo de chancho','Adobo de chancho',7.50);
+INSERT INTO `platos` (`IdPlato`,`NomPlato`,`DescPlato`,`PrecPlato`) VALUES (1,'Adobo de chancho','Descripcion del Plato',7.50);
 
 ALTER TABLE `platos` ENABLE KEYS;
 UNLOCK TABLES;
@@ -187,9 +211,33 @@ COMMIT;
 LOCK TABLES `usuario` WRITE;
 ALTER TABLE `usuario` DISABLE KEYS;
 
-INSERT INTO `usuario` (`IdUsuario`,`NomUsuario`,`ApeUsuario`,`LoginUsuario`,`CorreoUsuario`,`IdTipoUsuario`,`Contraseña`,`FlagLogin`) VALUES (2,'Jahir','Diaz','admin','jahirdiaz2595@gmail.com',1,X'bf427352f0f687a2d95d873b4059dc5c',1),(6,'jerry','contreras','jcontreras','jcontreras0011@hotmail.com',1,X'f3ba0c7fe279cc842427cda82ba404b5',1),(7,'chef','chef','chef','jahirdiaz2595@gmail.com',2,X'71edab04d0236f8c2f20157c21404003',1);
+INSERT INTO `usuario` (`IdUsuario`,`NomUsuario`,`ApeUsuario`,`LoginUsuario`,`CorreoUsuario`,`IdTipoUsuario`,`Contraseña`,`FlagLogin`) VALUES (2,'Jahir','Diaz','admin','jahirdiaz2595@gmail.com',1,X'bf427352f0f687a2d95d873b4059dc5c',1),(6,'jerry','contreras','jcontreras','jcontreras0011@hotmail.com',1,X'f3ba0c7fe279cc842427cda82ba404b5',1),(7,'chef','chef','chef','jahirdiaz2595@gmail.com',2,X'71edab04d0236f8c2f20157c21404003',1),(8,'jorge','jorge','jorge','jahir_diaz25@hotmail.com',1,X'f3ba0c7fe279cc842427cda82ba404b5',0);
 
 ALTER TABLE `usuario` ENABLE KEYS;
+UNLOCK TABLES;
+COMMIT;
+
+--
+-- Data for table: estadomesa
+--
+LOCK TABLES `estadomesa` WRITE;
+ALTER TABLE `estadomesa` DISABLE KEYS;
+
+INSERT INTO `estadomesa` (`IdEstadoMesa`,`Estado`) VALUES (1,'Libre'),(2,'Ocupado'),(3,'No Disponible');
+
+ALTER TABLE `estadomesa` ENABLE KEYS;
+UNLOCK TABLES;
+COMMIT;
+
+--
+-- Data for table: estadopedidos
+--
+LOCK TABLES `estadopedidos` WRITE;
+ALTER TABLE `estadopedidos` DISABLE KEYS;
+
+INSERT INTO `estadopedidos` (`IdEstadoPedidos`,`EstadoPedidos`) VALUES (1,'Abierto'),(2,'Cerrado');
+
+ALTER TABLE `estadopedidos` ENABLE KEYS;
 UNLOCK TABLES;
 COMMIT;
 
