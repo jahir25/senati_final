@@ -5,11 +5,16 @@
  */
 package View;
 
+import Controller.ControllerMesas;
+import Controller.ControllerMoso;
+import Model.Sesiones;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.MouseInfo;
 import java.awt.Panel;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -17,13 +22,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
  * @author ALUMNO
  */
 public class Moso extends JFrame implements ActionListener{
-    
+    ControllerMoso moso;
+    Sesiones data;
+    int xP, yP;
     JButton botones[] = new JButton[10];
     JPanel panel[] = new JPanel[10];
     /**
@@ -31,29 +39,54 @@ public class Moso extends JFrame implements ActionListener{
      */
     public Moso() {
         initComponents();
-        GeneraMesas();
+        ObtenerMesas();
     }
     
-    public final void GeneraMesas(){
-          panelmoso.setLayout(new GridLayout(3, 3, 100, 100));
-        for (int i = 0; i <= 10; i++) {
+    public void obtenerSesion(Sesiones data){
+        this.data = data;
+        String nombrecompleto;
+        nombrecompleto = data.getNombre() + " " + data.getApellido();
+        labeluser1.setHorizontalAlignment(SwingConstants.RIGHT);
+        labeluser1.setText(nombrecompleto);
+    }
+    
+    public void ObtenerMesas(){
+        Object[][] res;
+        moso = new ControllerMoso();
+        res = moso.ObtenerMesas();
+        
+        if (res.length > 0) {
+            GeneraMesas(res);
+        }
+        
+    }
+    
+    public final void GeneraMesas(Object[][] res){
+          panelmoso.setLayout(new GridLayout(4, 4, 100, 100));
+        for (int i = 0; i <= res.length; i++) {
             try {
-                
-                botones[i] = new JButton("Mesa N°" + i);
-                botones[i].setBackground(new Color(66,133,205));
-                botones[i].setBorder(null);
-                botones[i].setForeground(Color.white);
-                botones[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/table.png")));
-                botones[i].setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-                botones[i].setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-                botones[i].setSize(15, 20);
-                botones[i].addActionListener(this);
-
-//                panel[i] = new JPanel();
-//                panel[i].setBackground(new Color(66,133,205));
-                
-
-                panelmoso.add(botones[i]);
+                if (res[i][3].equals(3)) {
+                    
+                } else {
+                    
+                    System.out.println(res[i][1]);
+                    botones[i] = new JButton("Mesa N°" + res[i][1]);
+                    botones[i].setBorder(null);
+                    if (res[i][3].equals(1)) {
+                        botones[i].setBackground(new Color(66,133,205));
+                    }else if(res[i][3].equals(2)){
+                        botones[i].setBackground(new Color(255,51,51));
+                    }
+                    botones[i].setForeground(Color.white);
+                    botones[i].setName(res[i][0].toString());
+                    botones[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/table.png")));
+                    botones[i].setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+                    botones[i].setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+                    botones[i].setSize(15, 20);
+                    botones[i].addActionListener(this);
+                    panelmoso.add(botones[i]);
+                }
+                    
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -80,6 +113,16 @@ public class Moso extends JFrame implements ActionListener{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         PanelP.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -194,6 +237,16 @@ public class Moso extends JFrame implements ActionListener{
 
     }//GEN-LAST:event_jLabel2MousePressed
 
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        xP = evt.getX();
+        yP = evt.getY();
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        setLocation(point.x - xP, point.y - yP);
+    }//GEN-LAST:event_formMouseDragged
+
     /**
      * @param args the command line arguments
      */
@@ -245,7 +298,7 @@ public class Moso extends JFrame implements ActionListener{
             //JButton botone = botones[i];
             if (e.getSource() == botones[i]) {
                 Pedido ob = new Pedido();
-                ob.ObtenerMesa(i);
+                ob.ObtenerMesa(botones[i].getName().toString());
                 ob.show();
                 this.hide();
                 //JOptionPane.showMessageDialog(null, "Numero "+ i, "info", JOptionPane.INFORMATION_MESSAGE);

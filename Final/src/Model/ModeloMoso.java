@@ -59,12 +59,13 @@ public class ModeloMoso {
         try {
             String sql = "SELECT * FROM pedidodetalle PD \n" +
             "INNER JOIN platos PL ON PL.IdPlato = PD.IdPlato\n" +
-            "WHERE IdPedido = ? AND IdEstado != 4";
+            "WHERE IdPedido = ? AND IdEstado NOT IN (4, 5)";
             PreparedStatement smt = con.prepareStatement(sql);
             smt.setString(1, idPedido);
             int cont = 1;
             int cont2 = 0;
             res = smt.executeQuery();
+            System.out.println("Query consulta : " + smt);
             ResultSetMetaData rd = res.getMetaData();
             int columnas= rd.getColumnCount();
             int rowcount = 0;
@@ -75,6 +76,11 @@ public class ModeloMoso {
             obj = new Object[rowcount][columnas];
             //System.out.println(smt);
             while (res.next()) {
+//                for (int i = 0; i < rowcount; i++) {
+//                    for (int j = 0; j < columnas; j++) {
+//                        obj[i][j] = res.getObject(j+1);
+//                    }
+//                }
                 for (int i = 0; i < columnas; i++) {
                     //System.out.println(res.getObject(i+1));
                     obj[cont2][i] = res.getObject(i+1);
@@ -159,10 +165,11 @@ public class ModeloMoso {
 
     public int CerrarPedido(String idPedido) {
         int res = 0;
-        int cont = 0;
+        String cont = "";
         Connection con = ob.Conectar();
         cont = ConsultarPlato(idPedido);
-        if (cont == 0) {
+        if (cont.equals("0")) {
+            CerrarPlatos(idPedido);
             try {
                 String sql = "UPDATE pedidos SET IdEstadoPedidos = 2 WHERE IdPedidos = ?";
                 PreparedStatement smt = con.prepareStatement(sql);
@@ -172,12 +179,26 @@ public class ModeloMoso {
                 System.out.println(e);
             }
         }
-        
         return res;
     }
     
-    public int ConsultarPlato(String idPedido){
-        int cont = 0;
+    public int CerrarPlatos(String idPedidoDetalle){
+        int res = 0;
+        Connection con = ob.Conectar();
+        try {
+            String sql = "UPDATE pedidodetalle SET IdEstado = 5 WHERE IdPedido = ?";
+            PreparedStatement smt = con.prepareStatement(sql);
+            smt.setString(1, idPedidoDetalle);
+            res = smt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        //System.out.println("Sale Termina");
+        return res;
+    }
+    
+    public String ConsultarPlato(String idPedido){
+        String cont = "";
         ResultSet res = null;
         Connection con = ob.Conectar();
         try {
@@ -185,28 +206,61 @@ public class ModeloMoso {
             PreparedStatement smt = con.prepareStatement(sql);
             smt.setString(1, idPedido);
             res = smt.executeQuery();
+            //System.out.println(smt);
             while (res.next()) {
-                cont = (int) res.getObject(1);
+                //System.out.println("CONSULTA "+ res.getObject(1).toString());
+                cont = res.getObject(1).toString();
             }
         } catch (Exception e) {
             System.out.println(e);
         }
-        System.out.println("Cantidad de pedido "+ cont);
+        //System.out.println("Cantidad de pedido "+ cont);
         return cont;
     }
-    
-    public int UpdateMesaDisponible (String IdMesa){
+
+    public Object[][] ObtenerMesas() {
+        ResultSet res;
+        Connection con = ob.Conectar();
+        Object obj[][] = null;
+        try {
+            String sql = "SELECT * FROM mesas";
+            PreparedStatement smt = con.prepareStatement(sql);
+            res = smt.executeQuery();
+            System.out.println(smt);
+            ResultSetMetaData rd = res.getMetaData();
+            int columnas= rd.getColumnCount();
+            int rowcount = 0;
+            if (res.last()) {
+              rowcount = res.getRow();
+              res.beforeFirst();
+            }
+            System.out.println("filas : " + rowcount + "Columnas: " + columnas);
+            obj = new Object[rowcount][columnas];
+            int cont = 0;
+            while (res.next()) {
+                for (int i = 0; i < columnas; i++) {
+                    obj[cont][i] = res.getObject(i + 1);
+                }
+                cont++;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return obj;
+    }
+
+    public void UpdateEstadoMesa(String IdMesa, int Estado) {
         int res = 0;
         Connection con = ob.Conectar();
         try {
-            String sql = "UPDATE mesas SET IdEstadoMesa =  2 WHERE IdMesa = ?";
+            String sql = "UPDATE mesas SET IdEstadoMesa = ? WHERE IdMesa = ?";
             PreparedStatement smt = con.prepareStatement(sql);
-            smt.setString(1, IdMesa);
+            smt.setInt(1, Estado);
+            smt.setString(2, IdMesa);
             res = smt.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
         }
-        return res;
     }
     
 }

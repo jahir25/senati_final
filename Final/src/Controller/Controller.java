@@ -13,6 +13,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
 import View.Login;
+import View.Moso;
 import View.VerificarLogeo;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -49,11 +50,16 @@ public class Controller {
                     Admin adm = new Admin();
                     adm.obtenerSesion(data);
                     adm.show();
-                }else{
+                }else if(perfil.equals("2")){
                     System.out.println("es chef");
                     Chef ch = new Chef();
                     ch.obtenerSesion(data);
                     ch.show();
+                }else{
+                    System.out.println("es moso");
+                    Moso moso = new Moso();
+                    moso.obtenerSesion(data);
+                    moso.show();
                 }
             }else{
                 VerificarLogeo log = new VerificarLogeo();

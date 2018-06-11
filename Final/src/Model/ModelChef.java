@@ -26,7 +26,7 @@ public class ModelChef {
             while (res.next()) {
                 Object[] obj = new Object[7];
                 for (int i = 0; i < 7; i++) {
-                    obj[i] = res.getObject(0 + i).toString();
+                    obj[i] = res.getObject(i + 1).toString();
                 }
                 model.addRow(obj);
             }

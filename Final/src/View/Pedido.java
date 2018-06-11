@@ -38,10 +38,10 @@ public class Pedido extends javax.swing.JFrame {
     }
     
     
-    public void ObtenerMesa(Integer id){
-        idmesa = id.toString();
+    public void ObtenerMesa(String id){
+        idmesa = id;
         lblmesa.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblmesa.setText("Mesa N° "+ id.toString());
+        lblmesa.setText("Mesa N° "+ idmesa);
         TraerPedido(idmesa);
     }
     
@@ -480,6 +480,9 @@ public class Pedido extends javax.swing.JFrame {
         res = moso.CerrarPedido(pedido[0].toString(), idmesa);
         if (res == 1) {
             TraerPedido(idmesa);
+            //ObtenerDetallePedido(pedido[0].toString());
+            panelBoleta.removeAll();
+            panelBoleta.revalidate();
         }else{
             JOptionPane.showMessageDialog(null, "Existen platos que aun no se han atendido", "Info",JOptionPane.INFORMATION_MESSAGE);
         }
@@ -511,6 +514,7 @@ public class Pedido extends javax.swing.JFrame {
     private void btncrearpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncrearpedidoActionPerformed
         int res;
         res = moso.CrearPedido(idmesa);
+        moso.UpdateEstadoMesa(idmesa, 2);
         if (res == 1) {
             TraerPedido(idmesa);
         }
@@ -535,7 +539,7 @@ public class Pedido extends javax.swing.JFrame {
     public void TraerPedido(String id){
         //idmesa = id;
         System.out.println(id);
-        System.out.println("entra");
+        //System.out.println("entra");
         ControllerMoso moso = new ControllerMoso();
         pedido = moso.TraerPedido(id);
         String resCount = pedido[3].toString();
