@@ -57,7 +57,7 @@ public class ModelPlatos {
         Config cof = new Config();
         String llave = cof.pass();
         try {
-            String sql = "INSERT INTO mesas (NomPlato, DescPlato, PrecPlato) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO platos (NomPlato, DescPlato, PrecPlato) VALUES (?, ?, ?)";
             PreparedStatement smt = con.prepareStatement(sql);
             smt.setString(1, NomPlato);
             smt.setString(2, DescPlato);
@@ -69,12 +69,12 @@ public class ModelPlatos {
         return res.toString();
             }
             
-        public String UpdatePlatos( String id,String NomPlato, String DescPlato, String PrecPlato){
+        public String UpdatePlatos( String IdPlato,String NomPlato, String DescPlato, String PrecPlato){
         Integer res = 0;
         Connection con = Conectar();
         
         try {
-            String sql = "UPDATE mesas SET NomPlato = ?, DescPlato = ?, PrecPlato = ? WHERE IdMesa = ?";
+            String sql = "UPDATE platos SET NomPlato = ?, DescPlato = ?, PrecPlato = ? WHERE IdPlato = ?";
             PreparedStatement smt = con.prepareStatement(sql);
             smt.setString(1, NomPlato);
             smt.setString(2, DescPlato);

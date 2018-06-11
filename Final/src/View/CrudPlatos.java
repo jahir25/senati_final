@@ -204,6 +204,11 @@ public class CrudPlatos extends javax.swing.JFrame {
         btnregistrar1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnregistrar1.setForeground(new java.awt.Color(255, 255, 255));
         btnregistrar1.setText("Editar");
+        btnregistrar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnregistrar1MouseClicked(evt);
+            }
+        });
         btnregistrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnregistrar1ActionPerformed(evt);
@@ -223,46 +228,42 @@ public class CrudPlatos extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelplatosLayout.createSequentialGroup()
                         .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelplatosLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addGroup(PanelplatosLayout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtplato, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(PanelplatosLayout.createSequentialGroup()
                                 .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(PanelplatosLayout.createSequentialGroup()
                                         .addGap(10, 10, 10)
                                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10))
+                                .addGap(112, 112, 112)
+                                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSeparator4)
+                                    .addComponent(jSeparator2)
+                                    .addComponent(txtdescrip)
+                                    .addComponent(txtprecio)))
                             .addGroup(PanelplatosLayout.createSequentialGroup()
-                                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(PanelplatosLayout.createSequentialGroup()
-                                        .addGap(209, 209, 209)
-                                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(PanelplatosLayout.createSequentialGroup()
-                                        .addGap(199, 199, 199)
-                                        .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jSeparator4)
-                                            .addComponent(jSeparator2)
-                                            .addComponent(txtdescrip)))
-                                    .addGroup(PanelplatosLayout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel6)
-                                            .addGroup(PanelplatosLayout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addGap(66, 66, 66)
-                                                .addComponent(txtplato)))))
+                                .addGap(209, 209, 209)
+                                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtdescrip2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(0, 1, Short.MAX_VALUE))
+                        .addGap(1, 1, 1))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelplatosLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelplatosLayout.createSequentialGroup()
                                 .addComponent(lblmesa)
-                                .addGap(71, 71, 71)
+                                .addGap(118, 118, 118)
                                 .addComponent(txtplato2))
                             .addGroup(PanelplatosLayout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtdescrip2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(PanelplatosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,11 +277,10 @@ public class CrudPlatos extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel8))
                     .addGroup(PanelplatosLayout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelplatosLayout.createSequentialGroup()
                         .addGap(128, 128, 128)
-                        .addComponent(btnregistrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnregistrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelplatosLayout.setVerticalGroup(
@@ -309,9 +309,9 @@ public class CrudPlatos extends javax.swing.JFrame {
                             .addComponent(jLabel7))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(43, 43, 43)
                 .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtplato2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblmesa))
@@ -379,13 +379,14 @@ public class CrudPlatos extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 836, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -449,6 +450,14 @@ public class CrudPlatos extends javax.swing.JFrame {
     private void txtdescripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdescripActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtdescripActionPerformed
+
+    private void btnregistrar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnregistrar1MouseClicked
+        NomPlato = txtplato2.getText();
+        DescPlato = txtdescrip2.getText();
+        PrecPlato = txtprecio2.getText();
+        ob = new ControllerPlatos();
+        ob.EditarPlatos(id, NomPlato, DescPlato, PrecPlato, tablaplatos);
+    }//GEN-LAST:event_btnregistrar1MouseClicked
 
     /**
      * @param args the command line arguments

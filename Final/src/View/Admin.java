@@ -149,6 +149,9 @@ public class Admin extends javax.swing.JFrame {
             }
         });
         pplato.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pplatoMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 pplatoMouseExited(evt);
             }
@@ -189,6 +192,9 @@ public class Admin extends javax.swing.JFrame {
             }
         });
         pmesa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pmesaMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 pmesaMouseExited(evt);
             }
@@ -374,6 +380,16 @@ public class Admin extends javax.swing.JFrame {
         CrudUsuario ob = new CrudUsuario();
         ob.show();
     }//GEN-LAST:event_pmesa1MouseClicked
+
+    private void pmesaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pmesaMouseClicked
+        CrudMesas ob = new CrudMesas();
+        ob.show();        // TODO add your handling code here:
+    }//GEN-LAST:event_pmesaMouseClicked
+
+    private void pplatoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pplatoMouseClicked
+        CrudPlatos ob = new CrudPlatos();
+        ob.show();        // TODO add your handling code here:
+    }//GEN-LAST:event_pplatoMouseClicked
 
     /**
      * @param args the command line arguments

@@ -46,11 +46,11 @@ public class ControllerPlatos {
       
 }
       
-         public String GuardarPlatos(String NumMesas, String NumAsientos, String EstaMesa){
+         public String GuardarPlatos(String NomPlato, String DescPlato, String PrecPlato){
         String res;
         
         ob = new ModelPlatos();
-        res = ob.GuardarPlatos( NumMesas, NumAsientos, EstaMesa);
+        res = ob.GuardarPlatos( NomPlato, DescPlato, PrecPlato);
         //if (res.equals("1")) {
          // Registrar(NumMesas,  NumAsientos,EstaMesa);
         //}else{

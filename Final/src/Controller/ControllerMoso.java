@@ -55,7 +55,6 @@ public class ControllerMoso extends MouseAdapter{
     
     public void ObtenerDetalle(String idPedido, JPanel panel){
         //panel.updateUI();
-        System.out.println("ID PEDIDO" + idPedido);
         panel.removeAll();
         panel.revalidate();
         Object [][] res;
@@ -67,6 +66,7 @@ public class ControllerMoso extends MouseAdapter{
             column = res[0].length;
             precio_total = 0;
             panel.setLayout(new GridLayout(filas + 2, 3, 5, 5));
+            
             pedidos = new JLabel[filas][4];
 
             Font font = new Font("Tahona", Font.BOLD, 12);
@@ -166,19 +166,10 @@ public class ControllerMoso extends MouseAdapter{
     public int CerrarPedido(String idPedido, String idMesa) {
         int res, res2;
         res = ob.CerrarPedido(idPedido);
-        if (res == 1) {ob.UpdateEstadoMesa(idMesa, 1);
+        if (res == 1) {
+            res2  = ob.UpdateMesaDisponible(idMesa);
         }
         return res;
-    }
-
-    public Object[][] ObtenerMesas() {
-        Object res[][];
-        res = ob.ObtenerMesas();
-        return res;
-    }
-    
-    public void UpdateEstadoMesa(String IdMesa, int Estado){
-        ob.UpdateEstadoMesa(IdMesa, Estado);
     }
     
 }

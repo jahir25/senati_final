@@ -27,7 +27,8 @@ public class ModelMesas {
         ResultSet rs;
         rs = null;
         try {
-            String sql = "SELECT IdMesa,NumMesa,NumAsientos,EstaMesa FROM mesas";
+            String sql = "SELECT IdMesa,NumMesa,NumAsientos, estadomesa.Estado FROM mesas \n" +
+"INNER JOIN estadomesa ON mesas.IdEstadoMesa = estadomesa.IdEstadoMesa;";
             PreparedStatement smt = con.prepareStatement(sql);
             rs = smt.executeQuery();
             System.out.println(rs);
@@ -43,17 +44,17 @@ public class ModelMesas {
         }
         return rs;
     }
-        public String GuardarMesas(String NumMesa, String NumAsientos, String EstaMesa){
+        public String GuardarMesas(String NumMesa, String NumAsientos, String IdEstadoMesa){
         Integer res = 0;
         Connection con = Conectar();
         Config cof = new Config();
         String llave = cof.pass();
         try {
-            String sql = "INSERT INTO mesas (NumMesa, NumAsientos, EstaMesa) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO mesas (NumMesa, NumAsientos, IdEstadoMesa) VALUES (?, ?, ?)";
             PreparedStatement smt = con.prepareStatement(sql);
             smt.setString(1, NumMesa);
             smt.setString(2, NumAsientos);
-            smt.setString(3, EstaMesa);
+            smt.setString(3, IdEstadoMesa);
             res = smt.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error insert mesas" + e);
@@ -61,16 +62,17 @@ public class ModelMesas {
         return res.toString();
             }
             
-        public String UpdateMesas( String id,String NumMesa, String NumAsientos, String EstaMesa){
+        public String UpdateMesas( String id,String NumMesa, String NumAsientos, String IdEstadoMesa){
         Integer res = 0;
         Connection con = Conectar();
         
         try {
-            String sql = "UPDATE mesas SET NumMesa = ?, NumAsientos = ?, EstaMesa = ? WHERE IdMesa = ?";
+            String sql = "UPDATE mesas SET NumMesa = ?, NumAsientos = ?, IdEstadoMesa = ? WHERE IdMesa = ?";
             PreparedStatement smt = con.prepareStatement(sql);
             smt.setString(1, NumMesa);
             smt.setString(2, NumAsientos);
-            smt.setString(3, EstaMesa);
+            smt.setString(3, IdEstadoMesa);
+            smt.setString(4, id);
             
             System.out.println(smt);
             res = smt.executeUpdate();

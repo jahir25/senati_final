@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.Controller;
 import Controller.ControllerMesas;
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -15,7 +16,7 @@ public class CrudMesas extends javax.swing.JFrame {
     String id;
     ControllerMesas ob;
     String NumMesa, NumAsientos;
-    String EstaMesa;
+    String IdEstadoMesa;
 
     
     public CrudMesas() {
@@ -41,7 +42,6 @@ public class CrudMesas extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtmesas = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        txtestado1 = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         btnregistrar = new javax.swing.JButton();
@@ -53,12 +53,12 @@ public class CrudMesas extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         txtasientos1 = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
-        txtestado = new javax.swing.JTextField();
         jSeparator10 = new javax.swing.JSeparator();
         lblmesa = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        txtestado = new javax.swing.JComboBox<>();
+        txtestado2 = new javax.swing.JComboBox<>();
         jSeparator8 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablamesa = new javax.swing.JTable();
@@ -98,15 +98,6 @@ public class CrudMesas extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
 
-        txtestado1.setForeground(new java.awt.Color(102, 102, 102));
-        txtestado1.setText("Estado");
-        txtestado1.setBorder(null);
-        txtestado1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtestado1ActionPerformed(evt);
-            }
-        });
-
         jSeparator3.setForeground(new java.awt.Color(0, 153, 255));
 
         jSeparator4.setForeground(new java.awt.Color(0, 153, 255));
@@ -124,7 +115,7 @@ public class CrudMesas extends javax.swing.JFrame {
         btndeshabilitar.setBackground(new java.awt.Color(205, 92, 92));
         btndeshabilitar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btndeshabilitar.setForeground(new java.awt.Color(255, 255, 255));
-        btndeshabilitar.setText("Deshabilitar Mesa");
+        btndeshabilitar.setText("Editar");
         btndeshabilitar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btndeshabilitarMouseClicked(evt);
@@ -168,15 +159,6 @@ public class CrudMesas extends javax.swing.JFrame {
         jSeparator7.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator7.setForeground(new java.awt.Color(0, 153, 255));
 
-        txtestado.setForeground(new java.awt.Color(102, 102, 102));
-        txtestado.setText("Estado");
-        txtestado.setBorder(null);
-        txtestado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtestadoActionPerformed(evt);
-            }
-        });
-
         jSeparator10.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator10.setForeground(new java.awt.Color(0, 153, 255));
 
@@ -186,77 +168,77 @@ public class CrudMesas extends javax.swing.JFrame {
 
         jLabel8.setText("Estado");
 
+        txtestado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libre", "Ocupado", "No Disponible" }));
+
+        txtestado2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libre", "Ocupado", "No Disponible" }));
+
         javax.swing.GroupLayout PanelplatosLayout = new javax.swing.GroupLayout(Panelplatos);
         Panelplatos.setLayout(PanelplatosLayout);
         PanelplatosLayout.setHorizontalGroup(
             PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelplatosLayout.createSequentialGroup()
                 .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelplatosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblmesa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtmesas1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelplatosLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtasientos, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelplatosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtasientos1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelplatosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel8)
-                        .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelplatosLayout.createSequentialGroup()
-                                .addGap(143, 143, 143)
-                                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelplatosLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtestado1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(PanelplatosLayout.createSequentialGroup()
                         .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelplatosLayout.createSequentialGroup()
-                                .addGap(153, 153, 153)
-                                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btndeshabilitar, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(PanelplatosLayout.createSequentialGroup()
+                                        .addGap(153, 153, 153)
+                                        .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btndeshabilitar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(PanelplatosLayout.createSequentialGroup()
+                                        .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(PanelplatosLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(122, 122, 122)
+                                        .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                                            .addComponent(txtestado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(PanelplatosLayout.createSequentialGroup()
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelplatosLayout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
+                                .addGap(10, 10, 10)
+                                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(PanelplatosLayout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtasientos, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelplatosLayout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtmesas, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelplatosLayout.createSequentialGroup()
-                                        .addGap(199, 199, 199)
-                                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PanelplatosLayout.createSequentialGroup()
-                                .addGap(209, 209, 209)
-                                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PanelplatosLayout.createSequentialGroup()
-                                .addGap(209, 209, 209)
-                                .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 1, Short.MAX_VALUE)))
-                .addContainerGap(128, Short.MAX_VALUE))
+                                        .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtmesas, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(0, 11, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelplatosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelplatosLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jSeparator6, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                                    .addComponent(txtestado2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelplatosLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtasientos1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelplatosLayout.createSequentialGroup()
+                                .addComponent(lblmesa)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtmesas1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(128, 128, 128))
             .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelplatosLayout.createSequentialGroup()
                     .addContainerGap(212, Short.MAX_VALUE)
-                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(126, 126, 126)))
-            .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelplatosLayout.createSequentialGroup()
-                    .addContainerGap(222, Short.MAX_VALUE)
-                    .addComponent(txtestado, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(126, 126, 126)))
+                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(140, 140, 140)))
         );
         PanelplatosLayout.setVerticalGroup(
             PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,23 +249,22 @@ public class CrudMesas extends javax.swing.JFrame {
                     .addComponent(txtmesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
                 .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelplatosLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel6))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelplatosLayout.createSequentialGroup()
+                        .addComponent(txtasientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtasientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelplatosLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
                         .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(PanelplatosLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel7)))
-                .addGap(38, 38, 38)
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel6)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -299,31 +280,19 @@ public class CrudMesas extends javax.swing.JFrame {
                 .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtestado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(txtestado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(51, 51, 51)
                 .addComponent(btndeshabilitar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanelplatosLayout.createSequentialGroup()
                     .addGap(189, 189, 189)
                     .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(290, Short.MAX_VALUE)))
-            .addGroup(PanelplatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PanelplatosLayout.createSequentialGroup()
-                    .addGap(169, 169, 169)
-                    .addComponent(txtestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(424, Short.MAX_VALUE)))
+                    .addContainerGap(422, Short.MAX_VALUE)))
         );
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/close-browser.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
 
         jSeparator8.setForeground(new java.awt.Color(51, 51, 51));
 
@@ -377,9 +346,7 @@ public class CrudMesas extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(979, 979, 979)
-                        .addComponent(jLabel5)
-                        .addGap(61, 61, 61)
-                        .addComponent(jLabel2)))
+                        .addComponent(jLabel5)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -387,7 +354,6 @@ public class CrudMesas extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,20 +384,16 @@ public class CrudMesas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        this.hide();
-    }//GEN-LAST:event_jLabel2MouseClicked
-
     private void tablamesaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablamesaMouseClicked
 
         id = tablamesa.getValueAt(tablamesa.getSelectedRow(), 0).toString();
         NumMesa =tablamesa.getValueAt(tablamesa.getSelectedRow(), 1).toString();
         NumAsientos = tablamesa.getValueAt(tablamesa.getSelectedRow(), 2).toString();
-        EstaMesa = tablamesa.getValueAt(tablamesa.getSelectedRow(), 3).toString();
+        IdEstadoMesa = tablamesa.getValueAt(tablamesa.getSelectedRow(), 3).toString();
 
-         txtmesas1.setText(NumMesa);
+        txtmesas1.setText(NumMesa);
         txtasientos1.setText(NumAsientos);
-        txtestado1.setText(EstaMesa);
+        txtestado2.setSelectedItem(IdEstadoMesa);
 
     }//GEN-LAST:event_tablamesaMouseClicked
 
@@ -443,24 +405,43 @@ public class CrudMesas extends javax.swing.JFrame {
             
         String NumMesa = txtmesas.getText();
         String NumAsientos = txtasientos.getText();
-        String EstaMesa = txtestado1.getText();
-        
+        String IdEstadoMesa = txtestado.getSelectedItem().toString();
+        String idestado = "";
+        if(IdEstadoMesa == "Libre"){
+            idestado = "1";
+        }else if(IdEstadoMesa == "Ocupado"){
+            idestado = "2";
+        }else{
+            idestado = "3";
+        }
         ControllerMesas ob = new ControllerMesas();
-        ob.GuardarMesas(NumMesa,NumAsientos,EstaMesa);
+        ob.GuardarMesas(NumMesa,NumAsientos,idestado);
         ob.LlenarTabla(tablamesa);
     }//GEN-LAST:event_btnregistrarActionPerformed
 
     private void btndeshabilitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btndeshabilitarMouseClicked
-
+        NumMesa = txtmesas.getText();
+        NumAsientos = txtasientos.getText();
+        IdEstadoMesa = txtestado.getSelectedItem().toString();
+        ob = new ControllerMesas();
+        ob.EditarMesas(id, NumMesa, NumAsientos, IdEstadoMesa, tablamesa);
     }//GEN-LAST:event_btndeshabilitarMouseClicked
 
     private void btndeshabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeshabilitarActionPerformed
-
+        String NumMesa = txtmesas1.getText();
+        String NumAsientos = txtasientos1.getText();
+        String IdEstadoMesa = txtestado2.getSelectedItem().toString();
+        String idestado = "";
+        if(IdEstadoMesa == "Libre"){
+            idestado = "1";
+        }else if(IdEstadoMesa == "Ocupado"){
+            idestado = "2";
+        }else{
+            idestado = "3";
+        }
+        ob = new ControllerMesas();
+        ob.EditarMesas(id, NumMesa, NumAsientos, idestado, tablamesa);
     }//GEN-LAST:event_btndeshabilitarActionPerformed
-
-    private void txtestado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtestado1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtestado1ActionPerformed
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         xP = evt.getX();
@@ -483,10 +464,6 @@ public class CrudMesas extends javax.swing.JFrame {
     private void txtasientos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtasientos1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtasientos1ActionPerformed
-
-    private void txtestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtestadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtestadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -529,7 +506,6 @@ public class CrudMesas extends javax.swing.JFrame {
     private javax.swing.JButton btndeshabilitar;
     private javax.swing.JButton btnregistrar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -551,8 +527,8 @@ public class CrudMesas extends javax.swing.JFrame {
     private javax.swing.JTable tablamesa;
     private javax.swing.JTextField txtasientos;
     private javax.swing.JTextField txtasientos1;
-    private javax.swing.JTextField txtestado;
-    private javax.swing.JTextField txtestado1;
+    private javax.swing.JComboBox<String> txtestado;
+    private javax.swing.JComboBox<String> txtestado2;
     private javax.swing.JTextField txtmesas;
     private javax.swing.JTextField txtmesas1;
     // End of variables declaration//GEN-END:variables

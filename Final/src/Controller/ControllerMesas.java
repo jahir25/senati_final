@@ -32,13 +32,13 @@ public class ControllerMesas {
 
     }
       
-      public void EditarMesas(String id, String NumMesas, String NumAsientos, String EstaMesa,JTable table){
+      public void EditarMesas(String id, String NumMesas, String NumAsientos, String IdEstadoMesa,JTable table){
         
          ob = new ModelMesas();
         
         String res;
         
-        res = ob.UpdateMesas(id,NumMesas,NumAsientos,EstaMesa);
+        res = ob.UpdateMesas(id,NumMesas,NumAsientos,IdEstadoMesa);
         System.out.println(res);
         if (res.equals("1")) {
             LlenarTabla(table);
@@ -46,11 +46,11 @@ public class ControllerMesas {
       
 }
       
-         public String GuardarMesas(String NumMesas, String NumAsientos, String EstaMesa){
+         public String GuardarMesas(String NumMesas, String NumAsientos, String IdEstadoMesa){
         String res;
         
         ob = new ModelMesas();
-        res = ob.GuardarMesas( NumMesas, NumAsientos, EstaMesa);
+        res = ob.GuardarMesas( NumMesas, NumAsientos, IdEstadoMesa);
         //if (res.equals("1")) {
          // Registrar(NumMesas,  NumAsientos,EstaMesa);
         //}else{
