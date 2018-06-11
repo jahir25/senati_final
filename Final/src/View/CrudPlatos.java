@@ -399,15 +399,15 @@ public class CrudPlatos extends javax.swing.JFrame {
 
     private void tablaplatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaplatosMouseClicked
 
-
-        String id = tablaplatos.getValueAt(tablaplatos.getSelectedRow(), 0).toString();
+        id = tablaplatos.getValueAt(tablaplatos.getSelectedRow(), 0).toString();
         String NomPlato = tablaplatos.getValueAt(tablaplatos.getSelectedRow(), 1).toString();
         String DescPlato = tablaplatos.getValueAt(tablaplatos.getSelectedRow(), 2).toString();
         String PrecPlato = tablaplatos.getValueAt(tablaplatos.getSelectedRow(), 3).toString();
 
-         txtplato2.setText(NomPlato);
+        txtplato2.setText(NomPlato);
         txtdescrip2.setText(DescPlato);
         txtprecio2.setText(PrecPlato);
+
 
 
     }//GEN-LAST:event_tablaplatosMouseClicked
@@ -444,7 +444,12 @@ public class CrudPlatos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtprecioActionPerformed
 
     private void btnregistrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrar1ActionPerformed
-        // TODO add your handling code here:
+        String NomPlato = txtplato2.getText();
+        String DescPlato = txtdescrip2.getText();
+        String PrecPlato = txtprecio2.getText();
+        System.out.println(id);
+        ob = new ControllerPlatos();
+        ob.EditarPlatos(id, NomPlato, DescPlato, PrecPlato, tablaplatos);        // TODO add your handling code here:
     }//GEN-LAST:event_btnregistrar1ActionPerformed
 
     private void txtdescripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdescripActionPerformed

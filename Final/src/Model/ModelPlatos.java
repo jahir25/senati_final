@@ -79,6 +79,7 @@ public class ModelPlatos {
             smt.setString(1, NomPlato);
             smt.setString(2, DescPlato);
             smt.setString(3, PrecPlato);
+            smt.setString(4, IdPlato);
             
             System.out.println(smt);
             res = smt.executeUpdate();
