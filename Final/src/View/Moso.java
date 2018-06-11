@@ -10,16 +10,22 @@ import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
  *
  * @author ALUMNO
  */
-public class Moso extends javax.swing.JFrame {
-
+public class Moso extends JFrame implements ActionListener{
+    
+    JButton botones[] = new JButton[10];
+    JPanel panel[] = new JPanel[10];
     /**
      * Creates new form Moso
      */
@@ -29,37 +35,25 @@ public class Moso extends javax.swing.JFrame {
     }
     
     public final void GeneraMesas(){
-        PanelP.setLayout(new GridLayout(3, 4, 70, 40));
-//        JButton ob = new JButton("uno");
-//        ob.setSize(100, 100);
-//        ob.setVisible(true);
-//        PanelP.add(ob);
-//        JButton ob2 = new JButton("dos");
-//        ob2.setSize(100, 100);
-//        ob2.setVisible(true);
-//        PanelP.add(ob2);
-        
-        
-        
-//        JPanel panel;
-//        panel = new JPanel();
-        JButton botones[];
-        botones = new JButton[10];
-//        JPanel ob = new JPanel();
-//        ob.setLayout(new GridBagLayout());
-//        JLabel []lbl = new JLabel[10];
-//        int x = 120;
-//        int y = 240;
-//        setVisible(true);
-//        setSize(400, 400);
+          panelmoso.setLayout(new GridLayout(3, 3, 100, 100));
         for (int i = 0; i <= 10; i++) {
             try {
+                
                 botones[i] = new JButton("Mesa N°" + i);
                 botones[i].setBackground(new Color(66,133,205));
-                JLabel label = new JLabel("Mesa  N°" + i);
+                botones[i].setBorder(null);
                 botones[i].setForeground(Color.white);
+                botones[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/table.png")));
+                botones[i].setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+                botones[i].setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
                 botones[i].setSize(15, 20);
-                PanelP.add(botones[i]);
+                botones[i].addActionListener(this);
+
+//                panel[i] = new JPanel();
+//                panel[i].setBackground(new Color(66,133,205));
+                
+
+                panelmoso.add(botones[i]);
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -77,41 +71,128 @@ public class Moso extends javax.swing.JFrame {
     private void initComponents() {
 
         PanelP = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        label3 = new javax.swing.JLabel();
+        labeluser1 = new javax.swing.JLabel();
+        panelmoso = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         PanelP.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel4.setBackground(new java.awt.Color(66, 133, 205));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/close-white.png"))); // NOI18N
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel2MousePressed(evt);
+            }
+        });
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logo-white.png"))); // NOI18N
+        jLabel4.setText("MOSO");
+
+        label3.setForeground(new java.awt.Color(255, 255, 255));
+        label3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        label3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/user.png"))); // NOI18N
+        label3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        labeluser1.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 767, Short.MAX_VALUE)
+                .addComponent(labeluser1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label3)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label3)
+                    .addComponent(labeluser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel4)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        panelmoso.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout panelmosoLayout = new javax.swing.GroupLayout(panelmoso);
+        panelmoso.setLayout(panelmosoLayout);
+        panelmosoLayout.setHorizontalGroup(
+            panelmosoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1093, Short.MAX_VALUE)
+        );
+        panelmosoLayout.setVerticalGroup(
+            panelmosoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 587, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout PanelPLayout = new javax.swing.GroupLayout(PanelP);
         PanelP.setLayout(PanelPLayout);
         PanelPLayout.setHorizontalGroup(
             PanelPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1094, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(PanelPLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(panelmoso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
         );
         PanelPLayout.setVerticalGroup(
             PanelPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 674, Short.MAX_VALUE)
+            .addGroup(PanelPLayout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(panelmoso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PanelP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(PanelP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PanelP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(PanelP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        this.hide();
+        Login on = new Login();
+        on.show();
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+
+    }//GEN-LAST:event_jLabel2MousePressed
 
     /**
      * @param args the command line arguments
@@ -150,5 +231,25 @@ public class Moso extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelP;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel label3;
+    private javax.swing.JLabel labeluser1;
+    private javax.swing.JPanel panelmoso;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        for (int i = 0; i < botones.length; i++) {
+            //JButton botone = botones[i];
+            if (e.getSource() == botones[i]) {
+                Pedido ob = new Pedido();
+                ob.ObtenerMesa(i);
+                ob.show();
+                this.hide();
+                //JOptionPane.showMessageDialog(null, "Numero "+ i, "info", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }
 }

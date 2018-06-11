@@ -13,7 +13,7 @@ import Controller.ControllerPlatos;
  */
 public class CrudPlatos extends javax.swing.JFrame {
 
-       int xP, yP;
+    int xP, yP;
     String id;
     ControllerPlatos ob;
     String NomPlato, DescPlato;
