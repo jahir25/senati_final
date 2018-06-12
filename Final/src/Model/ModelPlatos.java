@@ -17,12 +17,12 @@ import javax.swing.table.DefaultTableModel;
  * @author ALUMNO
  */
 public class ModelPlatos {
-       public Connection Conectar(){
-        Connection con = null;
+    public Connection Conectar(){
+        com.mysql.jdbc.Connection con = null;
         try {
-            String url = "jdbc:mysql://localhost:3306/senati_final";
+            String url = "jdbc:mysql://35.231.174.208:3306/senati_final";
             Class.forName("com.mysql.jdbc.Driver");
-            con = (Connection) DriverManager.getConnection(url, "root", "");
+            con = (com.mysql.jdbc.Connection) DriverManager.getConnection(url, "root", "passRootMaster");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }

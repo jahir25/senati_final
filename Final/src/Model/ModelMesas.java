@@ -9,12 +9,12 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class ModelMesas {
-   public Connection Conectar(){
-        Connection con = null;
+    public Connection Conectar(){
+        com.mysql.jdbc.Connection con = null;
         try {
-            String url = "jdbc:mysql://localhost:3306/senati_final";
+            String url = "jdbc:mysql://35.231.174.208:3306/senati_final";
             Class.forName("com.mysql.jdbc.Driver");
-            con = (Connection) DriverManager.getConnection(url, "root", "");
+            con = (com.mysql.jdbc.Connection) DriverManager.getConnection(url, "root", "passRootMaster");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -28,7 +28,7 @@ public class ModelMesas {
         rs = null;
         try {
             String sql = "SELECT IdMesa,NumMesa,NumAsientos, estadomesa.Estado FROM mesas \n" +
-"INNER JOIN estadomesa ON mesas.IdEstadoMesa = estadomesa.IdEstadoMesa;";
+            "INNER JOIN estadomesa ON mesas.IdEstadoMesa = estadomesa.IdEstadoMesa;";
             PreparedStatement smt = con.prepareStatement(sql);
             rs = smt.executeQuery();
             System.out.println(rs);
