@@ -16,9 +16,9 @@ public class Model {
     public Connection Conectar(){
         Connection con = null;
         try {
-            String url = "jdbc:mysql://localhost:3306/senati_final";
+            String url = "jdbc:mysql://35.231.174.208:3306/senati_final";
             Class.forName("com.mysql.jdbc.Driver");
-            con = (Connection) DriverManager.getConnection(url, "root", "");
+            con = (Connection) DriverManager.getConnection(url, "root", "passRootMaster");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -33,7 +33,7 @@ public class Model {
         String llave = cof.pass();
         ResultSet rs = null;
         try {
-            String sql = "SELECT COUNT(*), IdTipoUsuario, FlagLogin, NomUsuario, ApeUsuario, IdUsuario FROM usuario WHERE (LoginUsuario = ? OR CorreoUsuario = ?) AND CAST(AES_DECRYPT(Contraseña, ?) AS CHAR) = ?";
+            String sql = "SELECT COUNT(*), IdTipoUsuario, FlagLogin, NomUsuario, ApeUsuario, IdUsuario FROM usuario WHERE (LoginUsuario = ? OR CorreoUsuario = ?) AND CAST(AES_DECRYPT(Contraseña, ?) AS CHAR) = ? GROUP BY IdUsuario";
             PreparedStatement smt = con.prepareStatement(sql);
             smt.setString(1, usuario);
             smt.setString(2, correo);

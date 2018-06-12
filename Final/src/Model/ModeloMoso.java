@@ -15,7 +15,7 @@ public class ModeloMoso {
         Object[] obj = new Object[4];
         try {
             //System.out.println(id);
-            String sql = "SELECT IdPedidos, IdMesa, FechaHora, COUNT(*) FROM pedidos WHERE IdEstadoPedidos = '1' AND IdMEsa = ?";
+            String sql = "SELECT IdPedidos, IdMesa, FechaHora, COUNT(*) FROM pedidos WHERE IdEstadoPedidos = '1' AND IdMEsa = ? GROUP BY IdPedidos";
             PreparedStatement smt = con.prepareStatement(sql);
             smt.setString(1, id);
             //System.out.println("query "+ smt);
