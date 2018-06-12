@@ -3,6 +3,7 @@ package Model;
 import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import javax.swing.table.DefaultTableModel;
 
 public class ModelChef {
@@ -15,18 +16,22 @@ public class ModelChef {
         
         try {
             String sql = "SELECT PD.IdPedido, PD.IdDetalle, NumMesa, NomPlato, PD.Cantidad, PD.Observación, PD.FechaPedido, EstPedido\n" +
-            "FROM pedidoDetalle PD\n" +
+            "FROM pedidodetalle PD\n" +
             "INNER JOIN pedidos PE ON PE.IdPedidos = PD.IdPedido\n" +
             "INNER JOIN platos PL ON PL.IdPlato = PD.IdPlato\n" +
             "INNER JOIN estadopedido ESP ON ESP.IdEstado = PD.IdEstado\n" +
-            "INNER JOIN mesas MS ON MS.IdMesa = PE.IdMesa";
+            "INNER JOIN mesas MS ON MS.IdMesa = PE.IdMesa\n" +
+            "WHERE PD.IdEstado IN (1,2)\n" +
+            "ORDER BY PD.IdPedido, PD.FechaPedido";
             //System.out.println(sql);
             PreparedStatement smt = con.prepareStatement(sql);
             res = smt.executeQuery();
+            ResultSetMetaData rd = res.getMetaData();
+            int columnas= rd.getColumnCount();
             while (res.next()) {
-                Object[] obj = new Object[7];
-                for (int i = 0; i < 7; i++) {
-                    obj[i] = res.getObject(0 + i).toString();
+                Object[] obj = new Object[columnas];
+                for (int i = 0; i < columnas; i++) {
+                    obj[i] = res.getObject(i + 1);
                 }
                 model.addRow(obj);
             }

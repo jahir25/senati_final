@@ -57,6 +57,7 @@ public class Usuario extends javax.swing.JFrame {
         btnguardar = new javax.swing.JButton();
         checkadmin = new javax.swing.JRadioButton();
         CheckCocinero = new javax.swing.JRadioButton();
+        CheckMoso = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         LogoUsuario = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
@@ -159,6 +160,15 @@ public class Usuario extends javax.swing.JFrame {
             }
         });
 
+        CheckMoso.setBackground(new java.awt.Color(255, 255, 255));
+        CheckMoso.setText("Moso");
+        CheckMoso.setBorder(null);
+        CheckMoso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckMosoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelUsuarioLayout = new javax.swing.GroupLayout(PanelUsuario);
         PanelUsuario.setLayout(PanelUsuarioLayout);
         PanelUsuarioLayout.setHorizontalGroup(
@@ -180,19 +190,11 @@ public class Usuario extends javax.swing.JFrame {
                     .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelUsuarioLayout.createSequentialGroup()
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(PanelUsuarioLayout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(PanelUsuarioLayout.createSequentialGroup()
-                                    .addGap(112, 112, 112)
-                                    .addComponent(checkadmin)
-                                    .addGap(147, 147, 147)
-                                    .addComponent(CheckCocinero)
-                                    .addGap(0, 0, Short.MAX_VALUE))))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelUsuarioLayout.createSequentialGroup()
                             .addGap(42, 42, 42)
-                            .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(PanelUsuarioLayout.createSequentialGroup()
                                     .addComponent(jLabel7)
                                     .addGap(130, 130, 130)
@@ -214,7 +216,15 @@ public class Usuario extends javax.swing.JFrame {
                                 .addGroup(PanelUsuarioLayout.createSequentialGroup()
                                     .addComponent(jLabel6)
                                     .addGap(155, 155, 155)
-                                    .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(PanelUsuarioLayout.createSequentialGroup()
+                                    .addGap(15, 15, 15)
+                                    .addComponent(checkadmin)
+                                    .addGap(92, 92, 92)
+                                    .addComponent(CheckCocinero)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(CheckMoso)
+                                    .addGap(9, 9, 9))))))
                 .addContainerGap(144, Short.MAX_VALUE))
         );
         PanelUsuarioLayout.setVerticalGroup(
@@ -238,7 +248,8 @@ public class Usuario extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(checkadmin)
-                            .addComponent(CheckCocinero))))
+                            .addComponent(CheckCocinero)
+                            .addComponent(CheckMoso))))
                 .addGap(22, 22, 22)
                 .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
@@ -259,7 +270,7 @@ public class Usuario extends javax.swing.JFrame {
                     .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -345,13 +356,21 @@ public class Usuario extends javax.swing.JFrame {
 
     private void checkadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkadminActionPerformed
         CheckCocinero.setSelected(false);
+        CheckMoso.setSelected(false);
         tipo = "1";
     }//GEN-LAST:event_checkadminActionPerformed
 
     private void CheckCocineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckCocineroActionPerformed
+        CheckMoso.setSelected(false);
         checkadmin.setSelected(false);
         tipo = "2";
     }//GEN-LAST:event_CheckCocineroActionPerformed
+
+    private void CheckMosoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckMosoActionPerformed
+        checkadmin.setSelected(false);
+        CheckCocinero.setSelected(false);
+        tipo = "3";
+    }//GEN-LAST:event_CheckMosoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -390,6 +409,7 @@ public class Usuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton CheckCocinero;
+    private javax.swing.JRadioButton CheckMoso;
     private javax.swing.JLabel LogoUsuario;
     private javax.swing.JPanel PanelUsuario;
     private javax.swing.JButton btnguardar;

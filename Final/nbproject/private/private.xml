@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Downloads/senati_final-master/Final/src/Controller/ControllerMesas.java</file>
-            <file>file:/C:/Users/Usuario/Downloads/senati_final-master/Final/src/Controller/ControllerChef.java</file>
-            <file>file:/C:/Users/Usuario/Downloads/senati_final-master/Final/src/Model/ModelMesas.java</file>
-            <file>file:/C:/Users/Usuario/Downloads/senati_final-master/Final/src/View/CrudMesas.java</file>
+            <file>file:/C:/xampp/htdocs/senati_final-master/Final/src/Model/ModelReporte.java</file>
+            <file>file:/C:/xampp/htdocs/senati_final-master/Final/src/Controller/ControllerReporte.java</file>
+            <file>file:/C:/xampp/htdocs/senati_final-master/Final/src/View/Reporte.java</file>
+            <file>file:/C:/xampp/htdocs/senati_final-master/Final/src/Controller/ControllerMoso.java</file>
         </group>
     </open-files>
 </project-private>

@@ -60,6 +60,9 @@ public class Admin extends javax.swing.JFrame {
         pmesa1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        pmesa2 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -181,7 +184,7 @@ public class Admin extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pmesa.setBackground(new java.awt.Color(66, 133, 205));
@@ -267,6 +270,49 @@ public class Admin extends javax.swing.JFrame {
                 .addComponent(jLabel12)
                 .addGap(7, 7, 7)
                 .addComponent(jLabel11)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pmesa2.setBackground(new java.awt.Color(66, 133, 205));
+        pmesa2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pmesa2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                pmesa2MouseMoved(evt);
+            }
+        });
+        pmesa2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pmesa2MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pmesa2MouseExited(evt);
+            }
+        });
+
+        jLabel13.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Reportes");
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/diagram.png"))); // NOI18N
+
+        javax.swing.GroupLayout pmesa2Layout = new javax.swing.GroupLayout(pmesa2);
+        pmesa2.setLayout(pmesa2Layout);
+        pmesa2Layout.setHorizontalGroup(
+            pmesa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pmesa2Layout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addGroup(pmesa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel13))
+                .addGap(28, 28, 28))
+        );
+        pmesa2Layout.setVerticalGroup(
+            pmesa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pmesa2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel14)
+                .addGap(7, 7, 7)
+                .addComponent(jLabel13)
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -281,17 +327,20 @@ public class Admin extends javax.swing.JFrame {
                 .addComponent(pmesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(114, 114, 114)
                 .addComponent(pmesa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addComponent(pmesa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pmesa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(pmesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(pplato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(83, 83, 83)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(pmesa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(pmesa1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pmesa2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pplato, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(214, Short.MAX_VALUE))
         );
 
@@ -391,6 +440,19 @@ public class Admin extends javax.swing.JFrame {
         ob.show();        // TODO add your handling code here:
     }//GEN-LAST:event_pplatoMouseClicked
 
+    private void pmesa2MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pmesa2MouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pmesa2MouseMoved
+
+    private void pmesa2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pmesa2MouseClicked
+        Reporte ob = new Reporte();
+        ob.show();
+    }//GEN-LAST:event_pmesa2MouseClicked
+
+    private void pmesa2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pmesa2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pmesa2MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -439,6 +501,8 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -450,6 +514,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel labeluser;
     private javax.swing.JPanel pmesa;
     private javax.swing.JPanel pmesa1;
+    private javax.swing.JPanel pmesa2;
     private javax.swing.JPanel pplato;
     // End of variables declaration//GEN-END:variables
 }

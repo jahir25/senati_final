@@ -29,7 +29,7 @@ public class Chef extends javax.swing.JFrame {
         initComponents();
         CargarTabla();
         btnrealizado.setVisible(false);
-        tablepedido.setBackground(new Color(0, 0, 0, 0));
+        //tablepedido.setBackground(new Color(0, 0, 0, 0));
     }
     
     

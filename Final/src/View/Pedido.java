@@ -38,10 +38,10 @@ public class Pedido extends javax.swing.JFrame {
     }
     
     
-    public void ObtenerMesa(Integer id){
-        idmesa = id.toString();
+    public void ObtenerMesa(String id){
+        idmesa = id;
         lblmesa.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblmesa.setText("Mesa N° "+ id.toString());
+        lblmesa.setText("Mesa N° "+ idmesa);
         TraerPedido(idmesa);
     }
     

@@ -21,10 +21,10 @@ public class ControllerChef {
         model.addColumn("Estado");
         chef.CargarTabla(model);
         table.setModel(model);
-//        table.getColumnModel().getColumn(1).setMaxWidth(0);
-//        table.getColumnModel().getColumn(1).setMinWidth(0);
-//        table.getTableHeader().getColumnModel().getColumn(1).setMaxWidth(0);
-//        table.getTableHeader().getColumnModel().getColumn(1).setMinWidth(0);
+        table.getColumnModel().getColumn(1).setMaxWidth(0);
+        table.getColumnModel().getColumn(1).setMinWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(1).setMaxWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(1).setMinWidth(0);
 //        table.getColumnModel().getColumn(6).setMaxWidth(0);
 //        table.getColumnModel().getColumn(6).setMinWidth(0);
 //        table.getTableHeader().getColumnModel().getColumn(6).setMaxWidth(0);
