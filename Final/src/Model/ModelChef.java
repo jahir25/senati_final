@@ -47,15 +47,18 @@ public class ModelChef {
     public String TomarPedido(String id){
         Integer res = null;
         Connection con = ob.Conectar();
-            
+        System.out.println("Saluda del ID: " + id);
         try {
-            String sql = "UPDATE pedidoDetalle SET IdEstado = 2 WHERE IdDetalle = ?";
+            String sql = "UPDATE pedidodetalle SET IdEstado = 2 WHERE IdDetalle = ?";
             PreparedStatement smt = con.prepareStatement(sql);
             smt.setString(1, id);
             res = smt.executeUpdate();
-            con.close();
+            System.out.println(smt);
+            System.out.println(res);
         } catch (Exception e) {
+            System.out.println("Error salida Tomar PEdido: "+ e);
         }
+        System.out.println("Salida : "+res);
         return res.toString();
         
     }
@@ -65,11 +68,11 @@ public class ModelChef {
         Connection con = ob.Conectar();
             
         try {
-            String sql = "UPDATE pedidoDetalle SET IdEstado = 3 WHERE IdDetalle = ?";
+            String sql = "UPDATE pedidodetalle SET IdEstado = 3 WHERE IdDetalle = ?";
             PreparedStatement smt = con.prepareStatement(sql);
             smt.setString(1, id);
             res = smt.executeUpdate();
-            con.close();
+            //con.close();
         } catch (Exception e) {
         }
         return res.toString();
