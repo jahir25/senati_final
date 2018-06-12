@@ -6,6 +6,8 @@
 package View;
 
 import Controller.ControllerPlatos;
+import java.awt.MouseInfo;
+import java.awt.Point;
 
 /**
  *
@@ -67,6 +69,16 @@ public class CrudPlatos extends javax.swing.JFrame {
         btnregistrar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -200,7 +212,7 @@ public class CrudPlatos extends javax.swing.JFrame {
 
         jLabel8.setText("Precio");
 
-        btnregistrar1.setBackground(new java.awt.Color(0, 153, 255));
+        btnregistrar1.setBackground(new java.awt.Color(205, 92, 92));
         btnregistrar1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnregistrar1.setForeground(new java.awt.Color(255, 255, 255));
         btnregistrar1.setText("Editar");
@@ -463,6 +475,16 @@ public class CrudPlatos extends javax.swing.JFrame {
         ob = new ControllerPlatos();
         ob.EditarPlatos(id, NomPlato, DescPlato, PrecPlato, tablaplatos);
     }//GEN-LAST:event_btnregistrar1MouseClicked
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        setLocation(point.x - xP, point.y - yP);        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseDragged
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        xP = evt.getX();
+        yP = evt.getY();        // TODO add your handling code here:
+    }//GEN-LAST:event_formMousePressed
 
     /**
      * @param args the command line arguments

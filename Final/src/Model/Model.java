@@ -175,5 +175,20 @@ public class Model {
         return res.toString();
         
     }
-    
+    public String EliminarUsuario(String id){
+        Integer res = 0;
+        Connection con = Conectar();
+        
+        try {
+            String sql = "Delete from usuario WHERE IdUsuario = ?";
+            PreparedStatement smt = con.prepareStatement(sql);
+            smt.setString(1, id);
+            System.out.println(smt);
+            res = smt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error update user" + e);
+        }
+        
+        return res.toString();
+    }
 }
