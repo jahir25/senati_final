@@ -90,6 +90,7 @@ public class CrudUsuario extends javax.swing.JFrame {
         btndeshabilitar = new javax.swing.JButton();
         btneditar = new javax.swing.JButton();
         btnrestablecer = new javax.swing.JButton();
+        CheckMoso = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -217,6 +218,15 @@ public class CrudUsuario extends javax.swing.JFrame {
             }
         });
 
+        CheckMoso.setBackground(new java.awt.Color(255, 255, 255));
+        CheckMoso.setText("Moso");
+        CheckMoso.setBorder(null);
+        CheckMoso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckMosoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelUsuarioLayout = new javax.swing.GroupLayout(PanelUsuario);
         PanelUsuario.setLayout(PanelUsuarioLayout);
         PanelUsuarioLayout.setHorizontalGroup(
@@ -234,23 +244,17 @@ public class CrudUsuario extends javax.swing.JFrame {
                     .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelUsuarioLayout.createSequentialGroup()
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
                             .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(PanelUsuarioLayout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(0, 0, Short.MAX_VALUE)
                                     .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(PanelUsuarioLayout.createSequentialGroup()
-                                    .addGap(112, 112, 112)
                                     .addComponent(checkadmin)
-                                    .addGap(147, 147, 147)
-                                    .addComponent(CheckCocinero)
                                     .addGap(0, 0, Short.MAX_VALUE))))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelUsuarioLayout.createSequentialGroup()
                             .addGap(10, 10, 10)
-                            .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(PanelUsuarioLayout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(130, 130, 130)
-                                    .addComponent(txtuser, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(PanelUsuarioLayout.createSequentialGroup()
                                     .addComponent(jLabel8)
                                     .addGap(151, 151, 151)
@@ -263,7 +267,17 @@ public class CrudUsuario extends javax.swing.JFrame {
                                     .addGap(190, 190, 190)
                                     .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(PanelUsuarioLayout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addGap(130, 130, 130)
+                                    .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtuser, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(PanelUsuarioLayout.createSequentialGroup()
+                                            .addComponent(CheckCocinero)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(CheckMoso)
+                                            .addGap(33, 33, 33))))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelUsuarioLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
@@ -298,7 +312,8 @@ public class CrudUsuario extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(checkadmin)
-                            .addComponent(CheckCocinero))))
+                            .addComponent(CheckCocinero)
+                            .addComponent(CheckMoso))))
                 .addGap(22, 22, 22)
                 .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
@@ -313,7 +328,7 @@ public class CrudUsuario extends javax.swing.JFrame {
                     .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
                 .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btndeshabilitar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnrestablecer, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -450,11 +465,13 @@ public class CrudUsuario extends javax.swing.JFrame {
 
     private void checkadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkadminActionPerformed
         CheckCocinero.setSelected(false);
+        CheckMoso.setSelected(false);
         tipo = "1";
     }//GEN-LAST:event_checkadminActionPerformed
 
     private void CheckCocineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckCocineroActionPerformed
         checkadmin.setSelected(false);
+        CheckMoso.setSelected(false);
         tipo = "2";
     }//GEN-LAST:event_CheckCocineroActionPerformed
 
@@ -476,6 +493,7 @@ public class CrudUsuario extends javax.swing.JFrame {
     private void tablausuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablausuarioMouseClicked
         checkadmin.setSelected(false);
         CheckCocinero.setSelected(false);
+        CheckMoso.setSelected(false);
 
         id = tablausuario.getValueAt(tablausuario.getSelectedRow(), 0).toString();
         nombre = tablausuario.getValueAt(tablausuario.getSelectedRow(), 1).toString();
@@ -486,8 +504,10 @@ public class CrudUsuario extends javax.swing.JFrame {
 
         if (tipo.equals("1")) {
             checkadmin.setSelected(true);
-        } else {
+        } else if(tipo.equals("2")) {
             CheckCocinero.setSelected(true);
+        }else{
+            CheckMoso.setSelected(true);
         }
 
         txtnombre.setText(nombre);
@@ -529,6 +549,12 @@ public class CrudUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btneditarMouseClicked
 
+    private void CheckMosoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckMosoActionPerformed
+        CheckCocinero.setSelected(false);
+        checkadmin.setSelected(false);
+        tipo = "3";
+    }//GEN-LAST:event_CheckMosoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -566,6 +592,7 @@ public class CrudUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton CheckCocinero;
+    private javax.swing.JRadioButton CheckMoso;
     private javax.swing.JLabel LogoLista1;
     private javax.swing.JPanel PanelUsuario;
     private javax.swing.JButton btndeshabilitar;

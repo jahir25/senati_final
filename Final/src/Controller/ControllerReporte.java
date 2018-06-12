@@ -162,7 +162,7 @@ public class ControllerReporte {
             =============================================================
             */
             
-            FileOutputStream out = new FileOutputStream(new File("c:/Xprueba.xlsx"));
+            FileOutputStream out = new FileOutputStream(new File("./Xprueba.xlsx"));
             book.write(out);
             out.close();
             System.out.println("Sale correcto");
