@@ -35,9 +35,12 @@ public class ModelChef {
                 }
                 model.addRow(obj);
             }
+            con.close();
         } catch (Exception e) {
             System.out.println("Error pedido carga" + e);
         }
+        
+        ;
         
     }
     
@@ -50,6 +53,7 @@ public class ModelChef {
             PreparedStatement smt = con.prepareStatement(sql);
             smt.setString(1, id);
             res = smt.executeUpdate();
+            con.close();
         } catch (Exception e) {
         }
         return res.toString();
@@ -65,6 +69,7 @@ public class ModelChef {
             PreparedStatement smt = con.prepareStatement(sql);
             smt.setString(1, id);
             res = smt.executeUpdate();
+            con.close();
         } catch (Exception e) {
         }
         return res.toString();

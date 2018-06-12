@@ -166,7 +166,8 @@ public class ControllerMoso extends MouseAdapter{
     public int CerrarPedido(String idPedido, String idMesa) {
         int res, res2;
         res = ob.CerrarPedido(idPedido);
-        if (res == 1) {ob.UpdateEstadoMesa(idMesa, 1);
+        if (res == 1) {
+            ob.UpdateEstadoMesa(idMesa, 1);
         }
         return res;
     }

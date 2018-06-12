@@ -5,6 +5,9 @@
         <group>
             <file>file:/C:/xampp/htdocs/senati_final/Final/src/View/CrudMesas.java</file>
             <file>file:/C:/xampp/htdocs/senati_final/Final/src/View/CrudPlatos.java</file>
+            <file>file:/C:/xampp/htdocs/senati_final/Final/src/Controller/Controller.java</file>
+            <file>file:/C:/xampp/htdocs/senati_final/Final/src/Model/Model.java</file>
+            <file>file:/C:/xampp/htdocs/senati_final/Final/src/View/CrudUsuario.java</file>
         </group>
     </open-files>
 </project-private>

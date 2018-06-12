@@ -19,9 +19,11 @@ import javax.swing.SwingConstants;
  */
 public class Chef extends javax.swing.JFrame {
     Sesiones data;
+    boolean valhilo = true;
     int xP, yP;
     ControllerChef chef;
     String idPedido;
+    Hilo h = new Hilo();
     /**
      * Creates new form Chef
      */
@@ -29,6 +31,7 @@ public class Chef extends javax.swing.JFrame {
         initComponents();
         CargarTabla();
         btnrealizado.setVisible(false);
+        h.start();
         //tablepedido.setBackground(new Color(0, 0, 0, 0));
     }
     
@@ -39,6 +42,22 @@ public class Chef extends javax.swing.JFrame {
         nombrecompleto = data.getNombre() + " " + data.getApellido();
         labeluser1.setHorizontalAlignment(SwingConstants.RIGHT);
         labeluser1.setText(nombrecompleto);
+    }
+    
+    public class Hilo extends Thread {
+
+        public void run() {
+            while (valhilo) {
+                System.out.println(valhilo);
+                try {
+                    System.out.println("sale");
+                    CargarTabla();
+                    Thread.sleep(5000);
+                } catch (Exception e) {
+
+                }
+            }
+        }
     }
     
     public void CargarTabla(){

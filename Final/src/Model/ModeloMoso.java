@@ -115,6 +115,7 @@ public class ModeloMoso {
     public int CrearPedido(String idmesa) {
         int res = 0;
         Connection con = ob.Conectar();
+        UpdateEstadoMesa(idmesa, 2);
         try {
             String sql = "INSERT INTO pedidos (IdMesa, IdEstadoPedidos) VALUES (?, 1)";
             PreparedStatement smt = con.prepareStatement(sql);
@@ -131,7 +132,7 @@ public class ModeloMoso {
         int estado;
         Connection con = ob.Conectar();
         estado = ConsultarEstadoPedido(idDetallePedido);
-        if (estado != 2) {
+        if (estado != 2 || estado != 3) {
             try {
                 String sql = "UPDATE pedidodetalle SET IdEstado = 4 WHERE IdDetalle = ?";
                 PreparedStatement smt = con.prepareStatement(sql);

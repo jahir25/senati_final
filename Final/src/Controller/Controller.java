@@ -128,9 +128,9 @@ public class Controller {
                         "						<li>MUCHAS SORPRESAS MÁS</li>\n" +
                         "					</ul>\n" +
                         "					<div style=\" width:100%,margin:20px 0; display: inline-block; text-align: center;\">\n" +
-                        "					<img style=\"padding-left: 120px;width: 40px;margin: 5px\" src=\"https://s33.postimg.cc/mx17fyjb3/coffee-cup.png\">\n" +
-                        "					<img style=\"padding: 0;width: 40px;margin: 5px\" src=\"https://s33.postimg.cc/w4tfwqayn/shop.png\">\n" +
-                        "					<img style=\"padding: 0;width: 40px;margin: 5px\" src=\"https://s33.postimg.cc/eerrbpzyn/spaguetti.png\">\n" +
+                        "					<img style=\"padding-left: 10%;width: 80px;margin: 5px\" src=\"https://s33.postimg.cc/mx17fyjb3/coffee-cup.png\">\n" +
+                        "					<img style=\"padding: 0;width: 80px;margin: 5px\" src=\"https://s33.postimg.cc/w4tfwqayn/shop.png\">\n" +
+                        "					<img style=\"padding: 0;width: 80px;margin: 5px\" src=\"https://s33.postimg.cc/eerrbpzyn/spaguetti.png\">\n" +
                         "					</div>\n" +
                         "					<br>\n" +
                         "					<br>\n" +
@@ -226,7 +226,7 @@ public class Controller {
         res = ob.RestablecerContraseña(id, contraseñaG);
         System.out.println("contraseña"+contraseñaG);
         if (res.equals("1")) {
-            EnviarEmailPass(nombre, ape, correo, contraseñaG);
+            EnviarEmailPass(nombre, ape,correo, contraseñaG);
             JOptionPane.showMessageDialog(null, "Contraseña Restablecida", "Info", JOptionPane.INFORMATION_MESSAGE);
         }
         
@@ -234,8 +234,52 @@ public class Controller {
     
     public void  EnviarEmailPass(String nombre, String ape, String correo, String pass){
         String nombreCompleto = nombre + " " + ape;
-        String texto = "Hola " + nombreCompleto + ", \nTu administrador reinicio tu contraseña \ntu nueva contraseña es: \npass: " + pass + 
-                "\n\nRecuerda que tambien puedes ingresar con tu correo electronico. \n\nSaludos Area Administrativa.";
+        String texto = "<!DOCTYPE html>\n" +
+                        "<html>\n" +
+                        "<head>\n" +
+                        "	<title>CORREO</title>\n" +
+                        "</head>\n" +
+                        "<body>\n" +
+                        "		<table style=\"max-width:600px; padding: 10px; margin: 0 auto; border-collapse: collapse;\">\n" +
+                        "			<tr>\n" +
+                        "				<td style=\"background-color: white; text-align: left; padding: 0\">\n" +
+                        "					<a href=\"https://web.facebook.com/jerry.contreras.716\">\n" +
+                        "					<img width=\"50%\" style=\"display: block; margin: 1.5% 3%\" src=\"https://s33.postimg.cc/dchktargv/logo.png\">\n" +
+                        "					</a>\n" +
+                        "				</td>\n" +
+                        "			</tr>\n" +
+                        "			<tr>\n" +
+                        "				<td style=\"background-color:#3374FF\">\n" +
+                        "				<div style=\"color : white; margin: 1% 10% 1%; text-align: justify; font-family: sans-serif;font-size: 1em\">\n" +
+                        "					<h3 style=\"color: white; text-align: center; margin: 0 0 7px \">El administrador a Solicitado cambio de contraseña</h3>\n" +
+                        "					\n" +
+                        "					</div>\n" +
+                        "				</td>\n" +
+                        "			</tr>\n" +
+                        "			<td style=\"background-color:white\">\n" +
+                        "				<div style=\"color : #252323; margin: 4% 10% 2%; text-align: justify; font-family: sans-serif;\">\n" +
+                        "						<p style=\"margin: 2px; font-size: 1em\">\n" +
+                        "						Hola" +" "+  nombreCompleto +" tu administrador a solicitado un cambio de contraseña<br><br>\n" +
+                        "\n" +
+                        "						Tu nombre completo es :" +" "+ nombreCompleto + "<br>\n" +
+                        "						Tu nueva contraseña es:" +" "+ pass +"\n" +
+                        "\n" +
+                        "						<br><br>\n" +
+                        "					<div style=\" width:100%,margin:20px 0; display: inline-block; text-align: center;\">\n" +
+                        "					<img style=\"padding-left:10%;width: 80px;margin: 5px\" src=\"https://s33.postimg.cc/mx17fyjb3/coffee-cup.png\">\n" +
+                        "					<img style=\"padding: 0;width: 80px;margin: 5px\" src=\"https://s33.postimg.cc/w4tfwqayn/shop.png\">\n" +
+                        "					<img style=\"padding: 0;width: 80px;margin: 5px\" src=\"https://s33.postimg.cc/eerrbpzyn/spaguetti.png\">\n" +
+                        "					</div>\n" +
+                        "					<br>\n" +
+                        "					<br>\n" +
+                        "					<p style=\"color: #002980; font-size: 12px; text-align: center;margin: 30px 0 0\"> RESTAURANT \"JAHIR & JERRY\" 2018 </p>\n" +
+                        "				</div>\n" +
+                        "			</td>\n" +
+                        "		</tr>\n" +
+                        "		</table>\n" +
+                        "\n" +
+                        "</body>\n" +
+                        "</html>";
         
         final String username = "senati.final@gmail.com";
         final String password = "Senati01";
@@ -260,7 +304,7 @@ public class Controller {
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(correo));
             message.setSubject("REINICIO DE CONTRAEÑA.");
-            message.setText(texto);
+            message.setContent(texto, "text/html");
 
             Transport.send(message);
 
