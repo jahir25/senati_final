@@ -176,7 +176,7 @@ public class CrudUsuario extends javax.swing.JFrame {
         btndeshabilitar.setBackground(new java.awt.Color(205, 92, 92));
         btndeshabilitar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btndeshabilitar.setForeground(new java.awt.Color(255, 255, 255));
-        btndeshabilitar.setText("Deshabilitar Usuario");
+        btndeshabilitar.setText("Eliminar");
         btndeshabilitar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btndeshabilitarMouseClicked(evt);
@@ -206,7 +206,7 @@ public class CrudUsuario extends javax.swing.JFrame {
         btnrestablecer.setBackground(new java.awt.Color(0, 153, 153));
         btnrestablecer.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnrestablecer.setForeground(new java.awt.Color(255, 255, 255));
-        btnrestablecer.setText("Restableces Contraseña");
+        btnrestablecer.setText("Restablecer Contraseña");
         btnrestablecer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnrestablecerMouseClicked(evt);
@@ -455,12 +455,8 @@ public class CrudUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtuserActionPerformed
 
     private void btndeshabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeshabilitarActionPerformed
-//        String nombre = txtnombre.getText();
-//        String ape = txtapellido.getText();
-//        String correo = txtcorreo.getText();
-//        String user = txtuser.getText();
-//        ob = new Controller();
-//        ob.EditarUsuario(id, nombre, ape, correo, user, tipo, tablausuario);
+        ob = new Controller();
+        ob.EliminarUsuario(id);
     }//GEN-LAST:event_btndeshabilitarActionPerformed
 
     private void checkadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkadminActionPerformed
